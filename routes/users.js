@@ -5,6 +5,7 @@ var express = require('express'),
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+	console.log(req.query.isNew);
 	res.send(ref.getAuth());
 });
 

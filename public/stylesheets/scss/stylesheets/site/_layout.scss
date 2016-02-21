@@ -15,6 +15,15 @@ html {
 		background-color: $lightgray;
 	}
 
+	&.default {
+
+		#body {
+			width: 100%;
+			margin: 103px auto 0;
+			padding: 20px;
+		}
+	}
+
 	h1 {
 		margin: 5px;
 
@@ -36,4 +45,115 @@ html {
 			text-decoration: none;
 		}
 	}
+
+	header {
+		width: 100%;
+		height: 103px;
+		margin: 0 auto;
+		padding: 20px;
+		background-color: $blue;
+		box-shadow: 0 1px 4px #333;
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		#header {
+			position: relative;
+			width: 100%;
+
+			.menu-btn {
+				width: 100px;
+				padding: 30px;
+				cursor: pointer;
+
+				.btn-hrz-mid {
+					display: block;
+					width: 100%;
+					position: relative;
+					border-top: 3px solid white;
+					@include transition(all 0.2s ease-in-out);
+
+					&::before {
+						content: '';
+						display: block;
+						border-top: 3px solid white;
+						width: 100%;
+						position: absolute;
+						@include transition(all 0.2s ease-in-out);
+						left: 0;
+						top: -11px;
+					}
+
+					&:after {
+						content: '';
+						display: block;
+						border-bottom: 3px solid white;
+						width: 100%;
+						position: absolute;
+						@include transition(all 0.2s ease-in-out);
+						left: 0;
+						bottom: -8px;
+					}
+				}
+
+				&:hover {
+					.btn-hrz-mid {
+						&::before {
+							content: '';
+							display: block;
+							border-top: 3px solid white;
+							width: 100%;
+							position: absolute;
+							@include transition(all 0.2s ease-in-out);
+							left: 0;
+							top: -15px;
+						}
+
+						&:after {
+							content: '';
+							display: block;
+							border-bottom: 3px solid white;
+							width: 100%;
+							position: absolute;
+							@include transition(all 0.2s ease-in-out);
+							left: 0;
+							bottom: -12px;
+						}
+					}
+				}
+
+				&.open {
+
+					.btn-hrz-mid {
+						border: 3px solid rgba(0, 0, 0, 0);
+
+						&::before {
+							content: '';
+							display: block;
+							border-top: 3px solid white;
+							width: 100%;
+							position: absolute;
+							top: 0;
+							@include transition(all 0.2s ease-in-out);
+							@include transform(rotate(45deg));
+						}
+
+						&:after {
+							content: '';
+							display: block;
+							border-top: 3px solid white;
+							border-bottom: none;
+							width: 100%;
+							position: absolute;
+							top: 0;
+							@include transition(all 0.2s ease-in-out);
+							@include transform(rotate(-45deg));
+						}
+					}
+				}
+			}
+		}
+	}
+
+
 }
