@@ -4,18 +4,3 @@ block content
 	h1= title
 	p Welcome to the #{title}
 
-	<hr />
-
-	h1 Register
-	form(id="frmRegister" action="/register" method="post")
-			.field
-				label(for="_email") Email:
-				input#_email(type="text", name="_email", value="")
-			.field
-				label(for="_password") Password:
-				input#_password(type="password", name="_password", value="")
-			.field
-				label(for="c_password") Confirm Password:
-				input#c_password(type="password", name="c_password", value="")
-			.field
-				button.btn(id="btnRegister") Register
