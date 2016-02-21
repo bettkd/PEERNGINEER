@@ -8,15 +8,14 @@ block content
 
 	h1 Register
 	form(id="frmRegister" action="/register" method="post")
-			p
-				label(for="_email") Email: <br>
+			.field
+				label(for="_email") Email:
 				input(type="text", name="_email", value="")
-			p
-				label(for="_password") Password: <br>
+			.field
+				label(for="_password") Password:
 				input(type="password", name="_password", value="")
-			p
-				label(for="c_password") Confirm Password: <br>
+			.field
+				label(for="c_password") Confirm Password:
 				input(type="password", name="c_password", value="")
-			p
+			.field
 				button.btn(id="btnRegister") Register
-			p #{_err_message}

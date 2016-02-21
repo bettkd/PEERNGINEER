@@ -3,14 +3,15 @@ extends layouts/nonav
 block content
 	#login
 		.login
-			h1 Login
+			h1.heading Login
 			form(id="frmlogin" action="/login" method="post")
-					p
-						label(for="email") Email: <br>
-						input(type="text", name="email", value="")
-					p
-						label(for="password") Password: <br>
-						input(type="password", name="password", value="")
-					p
-						button.btn(id="btnLogin") Login
-					p #{err_message}
+				.errors
+					
+				.field
+					label(for="email") Email
+					input(type="text", name="email", value= (!!email) ? email : "")
+				.field
+					label(for="password") Password
+					input(type="password", name="password")
+				.field
+					button.btn(id="btnLogin") Login

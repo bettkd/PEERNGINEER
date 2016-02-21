@@ -1,0 +1,51 @@
+form {
+	width: 100%;
+	padding: 10px;
+	margin: 0;
+
+	.errors {
+		padding: 10px 0;
+
+		
+	}
+
+	.field {
+		width: 100%;
+		padding: 10px 0;
+
+		label {
+			display: block;
+			margin: 5px auto;
+			text-align: left;
+			text-transform: uppercase;
+			font-size: 1.2em;
+			font-weight: 300;
+		}
+
+		input {
+			width: 100%;
+			padding: 10px;
+			font-size: 1.5em;
+			outline: none;
+			border: none;
+			border-bottom: 2px solid lightgray;
+			@include transition(all 0.5s);
+
+			&:focus {
+				border-bottom: 2px solid $blue;
+			}
+		}
+
+		button {
+			width: 100%;
+			padding: 15px;
+			color: white;
+			text-transform: uppercase;
+			background-color: $blue;
+			border-radius: 3px;
+			outline: none;
+			border: none;
+			cursor: pointer;
+		}
+	}
+}
