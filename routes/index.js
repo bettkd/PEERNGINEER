@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 // MARK : Login Existing User
-router.post('/', function(req, res){
+router.post('/login', function(req, res){
   var email = req.body.email;
   var password = req.body.password
 	// Create a callback to handle the result of the authentication

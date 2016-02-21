@@ -1,11 +1,11 @@
-extends layout
+extends layouts/layout
 
 block content
 	h1= title
 	p Welcome to the #{title}
 
 	h1 Login
-	form(id="frmlogin" action="/" method="post")
+	form(id="frmlogin" action="/login" method="post")
 			p
 				label(for="email") Email: <br>
 				input(type="text", name="email", value="")

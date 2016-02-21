@@ -25,7 +25,13 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, function(err) {
+	if(err) throw err;
+
+	console.log('\n\n*****************************************\n');
+	console.log('Peerngineer running on localhost:' + port);
+	console.log('\n*****************************************\n');
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
