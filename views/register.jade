@@ -1,20 +1,22 @@
 extends layouts/layout
 
 block content
-	h1= title
-	p Welcome to the #{title}
-
-	h1 Register
-	form(id="frmRegister" action="/register" method="post")
-			p
-				label(for="email") Email: <br>
-				input(type="text", name="email", value= (!!email) ? email : "")
-			p
-				label(for="password") Password: <br>
-				input(type="password", name="password", value="")
-			p
-				label(for="c_password") Confirm Password: <br>
-				input(type="password", name="c_password", value="")
-			p
-				button.btn(id="btnRegister") Register
-			p #{err}
+	#register
+		.register
+			h1.heading Register
+			form(id="frmRegister" action="/register" method="post")
+				if err
+					.errors
+						p=err
+				.field
+					label(for="email") Email: <br>
+					input#email.focus(type="text", name="email", value= (!!email) ? email : "")
+				.field
+					label(for="password") Password: <br>
+					input#password(type="password", name="password", value="")
+				.field
+					label(for="c_password") Confirm Password: <br>
+					input#c_password(type="password", name="c_password", value="")
+				.field
+					button.btn(id="btnRegister") Register
+			p Already have an account? <a href="/login">Login</a>

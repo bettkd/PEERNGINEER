@@ -9,7 +9,9 @@ var viewObj = {
 }
 
 router.get('/', function(req, res, next) {
-		res.render('register', viewObj);
+	viewObj.err = null;
+	viewObj.email = null;
+	res.render('register', viewObj);
 });
 
 
