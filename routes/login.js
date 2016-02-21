@@ -38,6 +38,11 @@ router.post('/', function(req, res){
 	 	}
 	}
 
+	if(email.indexOf('@') === -1)
+	{
+		email = email.concat("@claflin.edu");
+	}
+
 	if (email.indexOf("@claflin.edu") > -1) {
 		ref.authWithPassword({
 			email    : email,
