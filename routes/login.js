@@ -9,6 +9,7 @@ var viewObj = {
 
 router.get('/', function(req, res) {
 	viewObj.err = null;
+	viewObj.email = null;
 	res.render('login', viewObj);
 });
 
