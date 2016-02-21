@@ -12,30 +12,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: title });
 });
 
-// MARK : Login Existing User
-router.post('/login', function(req, res){
-  var email = req.body.email;
-  var password = req.body.password
-	// Create a callback to handle the result of the authentication
-	function authHandler(error, authData) {
-	  if (error) {
-	    console.log("Login Failed!", error);
-	    res.render('index', { err_message: error, title: title })
-	  } else {
-	    console.log("Authenticated successfully with payload:", authData);
-	    res.redirect("/users")
-	  }
-	}
-	if (email.indexOf("@claflin.edu") > -1) {
-		ref.authWithPassword({
-		  email    : email,
-		  password : password
-		}, authHandler);
-	} else {
-		res.render('index', { err_message: "Error: Login with your Claflin email.", title: title })
-	}
-});
-
 router.get('/register', function(req, res, next) {
   res.render('index', { title: title });
 });
