@@ -3,10 +3,9 @@ var express = require('express'),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-	console.log(req.query.isNew);
-	res.send(ref.getAuth());
+	ref.unauth();
+	res.redirect('/?u=false');
 });
 
 module.exports = router;

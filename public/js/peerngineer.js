@@ -1,0 +1,6 @@
+(function() {
+
+	//focus
+	$('.focus').focus();
+
+})();

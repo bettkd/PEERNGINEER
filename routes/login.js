@@ -8,6 +8,14 @@ var viewObj = {
 }
 
 router.get('/', function(req, res) {
+	// check if user is logged in
+	// redirect if true
+	if(ref.getAuth()) {
+		return res.redirect('/users');
+	}
+
+	viewObj.err = null;
+	viewObj.email = null;
 	res.render('login', viewObj);
 });
 
@@ -21,10 +29,11 @@ router.post('/', function(req, res){
 		if (error) {
 			console.log("Login Failed!", error);
 			viewObj.err = error;
+			viewObj.email = email;
 			res.render('login', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/users")
+			res.redirect("/")
 	 	}
 	}
 
