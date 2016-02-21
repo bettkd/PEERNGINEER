@@ -10,7 +10,7 @@ block content
 						p= err
 				.field
 					label(for="email") Email
-					input#email(type="text", name="email", value= (!!email) ? email : "")
+					input#email.focus(type="text", name="email", value= (!!email) ? email : "")
 				.field
 					label(for="password") Password
 					input#password(type="password", name="password")
