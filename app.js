@@ -10,9 +10,9 @@ var routes = require('./routes'),
 	login = require('./routes/login'),
 	logout = require('./routes/logout'),
 	register = require('./routes/register'),
-	users = require('./routes/users'),
-	profile = require('./routes/profile'),
-	resetpasswd = require('./routes/resetpasswd');
+	users = require('./routes/users');
+  resetpasswd = require('./routes/resetpasswd');
+  profile = require('./routes/profile');
 
 var app = express();
 
@@ -40,8 +40,8 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
 app.use('/users', users);
-app.use('/profile', profile);
 app.use('/resetpasswd', resetpasswd);
+app.use('/profile', profile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

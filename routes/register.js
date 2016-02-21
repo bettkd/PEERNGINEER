@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 	// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
-		return res.redirect('/users');
+		return res.redirect('/profile');
 	}
 
 	viewObj.err = null;
