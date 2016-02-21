@@ -34,4 +34,4 @@ jspm_packages
 .node_repl_history
 
 # Sass
-/public/style.css
+/public/stylesheets/style.css
