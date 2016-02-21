@@ -7,12 +7,29 @@ block content
 	p Bio: #{bio}
 
 	h2 Contact Info
-	p Email: #{email}
-	p Phone: #{phone}
-	p LinkedIn: #{linkedinID}
-	p Facebook: #{facebookID}
-	p GitHub: #{githubID}
+	p Email: <a href="mailto:#{phone}" target="_blank"> #{email} </a>
+	p Phone: <a href="tel:#{phone}" target="_blank"> #{phone} </a>
+	p LinkedIn: <a href="https://www.linkedin.com/in/#{linkedinID}" target="_blank"> #{linkedinID} </a>
+	p Facebook: <a href="https://www.facebook.com/" target="_blank"> #{facebookID} </a>
+	p GitHub: <a href="https://www.github.com/" target="_blank"> #{githubID} </a>
 
 	h2 Education
 	p Major: #{major}
 	p Classification: #{classification}
+
+	h2 Mentoring
+	if interestedtopics
+		p Interested Topics:
+			ul 
+				each val in interestedtopics
+					li= val
+	if mentortopics
+		p Mentor Topics:
+			ul 
+				each val in mentortopics
+					li= val
+	if availability
+		p Availability Schedule:
+			ul 
+				each val in availability
+					li= val
