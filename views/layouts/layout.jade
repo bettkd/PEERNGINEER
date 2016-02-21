@@ -14,6 +14,16 @@ html
 			#header
 				.menu-btn
 					span.btn-hrz-mid
+					
+				.logo
+					h1.logo-ph PEERNGINEER
+				
+				ul.log-reg
+					if !user	
+						li: a(href="/login") Login
+						li: a(href="/register") Register
+					else
+						li: a(href="/logout") Logout
 		
 		#body
 			block content
