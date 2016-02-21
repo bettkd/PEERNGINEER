@@ -8,6 +8,7 @@ var sassMiddleware = require('node-sass-middleware');
 
 var routes = require('./routes'),
 	login = require('./routes/login'),
+	logout = require('./routes/logout'),
 	register = require('./routes/register'),
 	users = require('./routes/users');
   resetpasswd = require('./routes/resetpasswd');
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/register', register);
 app.use('/users', users);
 app.use('/resetpasswd', resetpasswd);

@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 			res.render('register', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/users")
+			res.redirect("/users?isNew=true")
 		}
 	}
 
