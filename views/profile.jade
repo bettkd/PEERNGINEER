@@ -1,0 +1,9 @@
+extends layouts/layout
+
+block content
+	h1= title
+	p Welcome to the #{title}
+
+	p Profile for @#{username}
+	p Profile image: <img src="#{profileImageURL}" alt = "profImg">
+	p Email: #{email}

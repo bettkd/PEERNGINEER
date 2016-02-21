@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 	// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
-		return res.redirect('/users');
+		return res.redirect('/profile');
 	}
 
 	viewObj.err = null;
@@ -34,7 +34,7 @@ router.post('/', function(req, res){
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
 			remember: "sessionOnly"
-			res.redirect("/users")
+			res.redirect("/profile")
 	 	}
 	}
 
