@@ -10,12 +10,12 @@ block content
 	form(id="frmRegister" action="/register" method="post")
 			.field
 				label(for="_email") Email:
-				input(type="text", name="_email", value="")
+				input#_email(type="text", name="_email", value="")
 			.field
 				label(for="_password") Password:
-				input(type="password", name="_password", value="")
+				input#_password(type="password", name="_password", value="")
 			.field
 				label(for="c_password") Confirm Password:
-				input(type="password", name="c_password", value="")
+				input#c_password(type="password", name="c_password", value="")
 			.field
 				button.btn(id="btnRegister") Register

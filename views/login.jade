@@ -5,13 +5,14 @@ block content
 		.login
 			h1.heading Login
 			form(id="frmlogin" action="/login" method="post")
-				.errors
-					
+				if err
+					.errors
+						p= err
 				.field
 					label(for="email") Email
-					input(type="text", name="email", value= (!!email) ? email : "")
+					input#email(type="text", name="email", value= (!!email) ? email : "")
 				.field
 					label(for="password") Password
-					input(type="password", name="password")
+					input#password(type="password", name="password")
 				.field
 					button.btn(id="btnLogin") Login

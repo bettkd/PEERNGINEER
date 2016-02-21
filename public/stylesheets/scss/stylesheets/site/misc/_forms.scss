@@ -4,9 +4,15 @@ form {
 	margin: 0;
 
 	.errors {
-		padding: 10px 0;
+		padding: 10px;
+		text-align: left;
+		background-color: $red;
+		border-radius: 2px;
 
-		
+		p {
+			color: white;
+			margin: 0;
+		}
 	}
 
 	.field {
