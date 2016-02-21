@@ -33,7 +33,7 @@ router.post('/', function(req, res){
 			res.render('login', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/")
+			res.redirect("/users")
 	 	}
 	}
 
