@@ -9,6 +9,12 @@ var viewObj = {
 }
 
 router.get('/', function(req, res, next) {
+	// check if user is logged in
+	// redirect if true
+	if(ref.getAuth()) {
+		return res.redirect('/users');
+	}
+
 	viewObj.err = null;
 	viewObj.email = null;
 	res.render('register', viewObj);
@@ -17,10 +23,12 @@ router.get('/', function(req, res, next) {
 
 // MARK : Register New User
 router.post('/', function(req, res){
+
+	//grab data from request
 	var email = req.body.email;
-	var password = req.body.password
-	var confirmpassword = req.body.c_password
-	console.log(email)
+	var password = req.body.password;
+	var confirmpassword = req.body.c_password;
+
 	// Create a callback to handle the result of the authentication
 	function authHandler(error, authData) {
 		if (error) {
@@ -63,8 +71,12 @@ router.post('/', function(req, res){
 						console.log("Error creating user:", error);
 				}
 			} else {
-				console.log("Successfully created user account with uid:", userData.uid);
-				res.redirect("/users")
+
+				// log new user in
+				ref.authWithPassword({
+					email: email,
+					password: password
+				}, authHandler);
 			}
 		});
 	}
