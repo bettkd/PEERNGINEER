@@ -3,10 +3,12 @@ var express = require('express'),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
+var viewObj = {
+	title: 'Login | PEERNGINEER'
+}
+
 router.get('/', function(req, res) {
-	res.render('login', {
-		title: 'Login'
-	});
+	res.render('login', viewObj);
 });
 
 // MARK : Login Existing User
@@ -18,7 +20,8 @@ router.post('/', function(req, res){
 	function authHandler(error, authData) {
 		if (error) {
 			console.log("Login Failed!", error);
-			res.render('login', { err_message: error, title: 'title' })
+			viewObj.err = error;
+			res.render('login', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
 			res.redirect("/users")
@@ -31,7 +34,9 @@ router.post('/', function(req, res){
 			password : password
 		}, authHandler);
 	} else {
-		res.render('login', { err_message: "Error: Login with your Claflin email.", title: 'title' })
+		viewObj.err = "Error: Login with your Claflin email.";
+		viewObj.email = email;
+		res.render('login', viewObj)
 	}
 });
 
