@@ -4,19 +4,6 @@ block content
 	h1= title
 	p Welcome to the #{title}
 
-	h1 Login
-	form(id="frmlogin" action="/login" method="post")
-			p
-				label(for="email") Email: <br>
-				input(type="text", name="email", value="")
-			p
-				label(for="password") Password: <br>
-				input(type="password", name="password", value="")
-			p
-				button.btn(id="btnLogin") Login
-			p #{err_message}
-
-
 	<hr />
 
 	h1 Register

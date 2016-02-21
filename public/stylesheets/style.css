@@ -1,8 +1,1 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);body,html{box-sizing:border-box;width:100%;height:100%;margin:0;padding:0;font-family:'Open Sans', sans-serif}body.nonav,html.nonav{background-color:#fafafa}
