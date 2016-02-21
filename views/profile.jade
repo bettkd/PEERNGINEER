@@ -2,8 +2,17 @@ extends layouts/layout
 
 block content
 	h1= title
-	p Welcome to the #{title}
+	p <img src="#{profileImageURL}" alt = "profImg" align="left">
+	p #{firstname} #{lastname} (@#{username})
+	p Bio: #{bio}
 
-	p Profile for @#{username}
-	p Profile image: <img src="#{profileImageURL}" alt = "profImg">
+	h2 Contact Info
 	p Email: #{email}
+	p Phone: #{phone}
+	p LinkedIn: #{linkedinID}
+	p Facebook: #{facebookID}
+	p GitHub: #{githubID}
+
+	h2 Education
+	p Major: #{major}
+	p Classification: #{classification}
