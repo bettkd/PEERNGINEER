@@ -6,19 +6,32 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 
+//get firebase
+var Firebase = require('firebase'),
+	ref = new Firebase("https://peerngineer.firebaseio.com");
+
 var routes = require('./routes'),
 	login = require('./routes/login'),
 	logout = require('./routes/logout'),
 	register = require('./routes/register'),
-	users = require('./routes/users');
-  resetpasswd = require('./routes/resetpasswd');
-  profile = require('./routes/profile');
+	users = require('./routes/users'),
+	resetpasswd = require('./routes/resetpasswd'),
+	profile = require('./routes/profile');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//set locals
+app.use(function(req, res, next) {
+	if(ref.getAuth()) {
+		res.locals.user = true;
+	}
+
+	next();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
