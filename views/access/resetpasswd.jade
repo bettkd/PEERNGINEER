@@ -1,10 +1,10 @@
-extends layouts/layout
+extends ../layouts/layout
 
 block content
 	#resetpasswd
 		.resetpasswd
 			h1.heading Reset Password
-			form(id="frmresetpasswd" action="/resetpasswd" method="post")
+			form(id="frmresetpasswd" action="/access/resetpasswd" method="post")
 				if err
 					.errors
 						p= err

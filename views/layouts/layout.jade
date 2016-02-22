@@ -20,10 +20,10 @@ html
 				
 				ul.log-reg
 					if !user	
-						li: a(href="/login") Login
-						li: a(href="/register") Register
+						li: a(href="/access/login") Login
+						li: a(href="/access/register") Register
 					else
-						li: a(href="/logout") Logout
+						li: a(href="/access/logout") Logout
 		
 		#body
 			block content

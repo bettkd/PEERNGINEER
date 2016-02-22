@@ -11,16 +11,13 @@ var Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
 var routes = require('./routes'),
-	login = require('./routes/login'),
-	logout = require('./routes/logout'),
-	register = require('./routes/register'),
-	users = require('./routes/users'),
-	resetpasswd = require('./routes/resetpasswd'),
-	profile = require('./routes/profile'),
-	users = require('./routes/users'),
-	resetpasswd = require('./routes/resetpasswd'),
-	profile = require('./routes/profile'),
-	profile_edit = require('./routes/profile_edit');
+	login = require('./routes/access/login'),
+	logout = require('./routes/access/logout'),
+	register = require('./routes/access/register'),
+	resetpasswd = require('./routes/access/resetpasswd'),
+	users = require('./routes/user/users'),
+	profile = require('./routes/user/profile'),
+	profile_edit = require('./routes/user/profile_edit');
 
 var app = express();
 
@@ -33,7 +30,6 @@ app.use(function(req, res, next) {
 	if(ref.getAuth()) {
 		res.locals.user = true;
 	}
-
 	next();
 });
 
@@ -53,13 +49,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/login', login);
-app.use('/logout', logout);
-app.use('/register', register);
-app.use('/users', users);
-app.use('/resetpasswd', resetpasswd);
-app.use('/profile', profile);
-app.use('/profile/edit', profile_edit);
+app.use('/access/login', login);
+app.use('/access/logout', logout);
+app.use('/access/register', register);
+app.use('/access/resetpasswd', resetpasswd);
+app.use('/user/users', users);
+app.use('/user/profile', profile);
+app.use('/user/profile_edit', profile_edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

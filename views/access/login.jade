@@ -1,10 +1,10 @@
-extends layouts/nonav
+extends ../layouts/nonav
 
 block content
 	#login
 		.login
 			h1.heading Login
-			form(id="frmlogin" action="/login" method="post")
+			form(id="frmlogin" action="/access/login" method="post")
 				if err
 					.errors
 						p= err
@@ -16,5 +16,5 @@ block content
 					input#password(type="password", name="password")
 				.field
 					button.btn(id="btnLogin") Login
-			p Forgot your password? <a href="/resetpasswd">Reset Password</a>
-			p Don't have an account? <a href="/register">Register</a>
+			p Forgot your password? <a href="/access/resetpasswd">Reset Password</a>
+			p Don't have an account? <a href="/access/register">Register</a>

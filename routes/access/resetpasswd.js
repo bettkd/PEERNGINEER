@@ -10,7 +10,7 @@ var viewObj = {
 router.get('/', function(req, res) {
 	viewObj.err = null;
 	viewObj.email = null;
-	res.render('resetpasswd', viewObj);
+	res.render('access/resetpasswd', viewObj);
 });
 
 router.post('/', function(req, res){
@@ -20,12 +20,12 @@ router.post('/', function(req, res){
 	}, function(error) {
 		if (error === null) {
 			console.log("Password reset email sent successfully");
-			res.redirect("/login")
+			res.redirect("/access/login")
 		} else {
 			console.log("Error sending password reset email:", error);
 			viewObj.err = error;
 			viewObj.email = email;
-			res.render('resetpasswd', viewObj)
+			res.render('access/resetpasswd', viewObj)
 		}
 	});
 });

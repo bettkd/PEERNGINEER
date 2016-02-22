@@ -31,10 +31,10 @@ router.get('/', function(req, res) {
 		viewObj.availability = ["MW10p-11.30p", "MF4.30p-6p", "TR12.30p-1.15p"]
 
 		console.log("Image url:", authData.password.profileImageURL);
-		res.render('profile_edit', viewObj)
+		res.render('user/profile', viewObj)
 	} else {
 		console.log("User not authenticated");
-		return res.redirect('/login');
+		return res.redirect('/access/login');
 	}
 	;
 });

@@ -12,12 +12,12 @@ router.get('/', function(req, res, next) {
 	// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
-		return res.redirect('/profile');
+		return res.redirect('/user/profile');
 	}
 
 	viewObj.err = null;
 	viewObj.email = null;
-	res.render('register', viewObj);
+	res.render('access/register', viewObj);
 });
 
 
@@ -37,14 +37,14 @@ router.post('/', function(req, res){
 			res.render('register', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/users?isNew=true")
+			res.redirect("/user/profile_edit?isNew=true")
 		}
 	}
 
 	function handleError(error) {
 		viewObj.err = error
 		viewObj.email = email
-		res.render('register', viewObj)
+		res.render('access/register', viewObj)
 	}
 
 	if (email.indexOf("@claflin.edu") < 0) {

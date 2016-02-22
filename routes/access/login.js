@@ -11,12 +11,12 @@ router.get('/', function(req, res) {
 	// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
-		return res.redirect('/profile');
+		return res.redirect('/user/profile');
 	}
 
 	viewObj.err = null;
 	viewObj.email = null;
-	res.render('login', viewObj);
+	res.render('access/login', viewObj);
 });
 
 // MARK : Login Existing User
@@ -30,11 +30,10 @@ router.post('/', function(req, res){
 			console.log("Login Failed!", error);
 			viewObj.err = error;
 			viewObj.email = email;
-			res.render('login', viewObj)
+			res.render('access/login', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			remember: "sessionOnly"
-			res.redirect("/profile")
+			res.redirect("/user/profile")
 	 	}
 	}
 
@@ -51,7 +50,7 @@ router.post('/', function(req, res){
 	} else {
 		viewObj.err = "Error: Login with your Claflin email.";
 		viewObj.email = email;
-		res.render('login', viewObj)
+		res.render('access/login', viewObj)
 	}
 });
 
