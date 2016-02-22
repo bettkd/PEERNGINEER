@@ -2,8 +2,35 @@ extends layouts/layout
 
 block content
 	h1= title
-	p Welcome to the #{title}
+	p User: @#{username}
+	p <img src="#{profileImageURL}" alt = "profImg" align="left">
+	p #{firstname} #{lastname}
+	p Bio: #{bio}
 
-	p Profile for @#{username}
-	p Profile image: <img src="#{profileImageURL}" alt = "profImg">
-	p Email: #{email}
+	h2 Contact Info
+	p Email: <a href="mailto:#{phone}" target="_blank"> #{email} </a>
+	p Phone: <a href="tel:#{phone}" target="_blank"> #{phone} </a>
+	p LinkedIn: <a href="https://www.linkedin.com/in/#{linkedinID}" target="_blank"> #{linkedinID} </a>
+	p Facebook: <a href="https://www.facebook.com/" target="_blank"> #{facebookID} </a>
+	p GitHub: <a href="https://www.github.com/" target="_blank"> #{githubID} </a>
+
+	h2 Education
+	p Major: #{major}
+	p Classification: #{classification}
+
+	h2 Mentoring
+	if interestedtopics
+		p Interested Topics:
+			ul 
+				each val in interestedtopics
+					li= val
+	if mentortopics
+		p Mentor Topics:
+			ul 
+				each val in mentortopics
+					li= val
+	if availability
+		p Availability Schedule:
+			ul 
+				each val in availability
+					li= val
