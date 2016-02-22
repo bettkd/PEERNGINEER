@@ -1,0 +1,60 @@
+extends layouts/layout
+
+block content
+	h1= title
+	p User: @#{username}
+	.field
+		Image <img src="#{profileImageURL}" alt = "profImg" align="left">
+	.field
+		label(for="firstname") First Name:
+		input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
+	.field
+		label(for="lastname") Last Name:
+		input#lastname.focus(type="text", name="lastname", value= (!!lastname) ? lastname : "")
+	.field
+		label(for="bio") Bio:
+		textarea#bio.focus(rows="3", name="bio", value= (!!bio) ? bio : "")
+
+	h2 Contact Info
+	.field
+		label(for="phone") Phone:
+		input#phone.focus(type="text", name="phone", value= (!!phone) ? phone : "")
+	.field
+		label(for="linkedinID") LinkedIn ID:
+		input#linkedinID.focus(type="text", name="linkedinID", value= (!!linkedinID) ? linkedinID : "")
+	.field
+		label(for="facebookID") Facebook ID:
+		input#facebookID.focus(type="text", name="facebookID", value= (!!facebookID) ? facebookID : "")
+	.field
+		label(for="githubID") GitHub ID:
+		input#githubID.focus(type="text", name="githubID", value= (!!githubID) ? githubID : "")
+
+	h2 Education
+	.field
+		label(for="major") Major:
+		input#major.focus(type="text", name="major", value= (!!major) ? major : "")
+	.field
+		label(for="classification") Classification:
+		input#classification.focus(type="text", name="classification", value= (!!classification) ? classification : "")
+
+	h2 Mentoring
+	if interestedtopics
+		p Interested Topics:
+			ul 
+				each val in interestedtopics
+					li
+						input#val.focus(type="text", name="val", value= (!!val) ? val : "")
+					
+	if mentortopics
+		p Mentor Topics:
+			ul 
+				each val in mentortopics
+					li= val
+	if availability
+		p Availability Schedule:
+			ul 
+				each val in availability
+					li
+						input#val.focus(type="text", name="val", value= (!!val) ? val : "")
+	.field
+					button.btn(id="btnSave") Save
