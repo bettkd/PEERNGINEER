@@ -4,7 +4,7 @@ var express = require('express'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
 var viewObj = {
-	title: 'Login | PEERNGINEER'
+	title: 'Reset Password | PEERNGINEER'
 }
 
 router.get('/', function(req, res) {

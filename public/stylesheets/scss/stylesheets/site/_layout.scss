@@ -10,17 +10,18 @@ html {
 	padding: 0;
 	font-size: 14px;
 	font-family: 'Open Sans', sans-serif;
+	background-color: $lightgray;
 
 	&.nonav {
-		background-color: $lightgray;
+		
 	}
 
 	&.default {
 
 		#body {
 			width: 100%;
-			margin: 103px auto 0;
-			padding: 20px;
+			height: 100%;
+			padding: 103px 10px 10px;
 		}
 	}
 
