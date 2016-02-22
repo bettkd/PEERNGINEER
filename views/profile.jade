@@ -2,8 +2,9 @@ extends layouts/layout
 
 block content
 	h1= title
+	p User: @#{username}
 	p <img src="#{profileImageURL}" alt = "profImg" align="left">
-	p #{firstname} #{lastname} (@#{username})
+	p #{firstname} #{lastname}
 	p Bio: #{bio}
 
 	h2 Contact Info

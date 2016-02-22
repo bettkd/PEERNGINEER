@@ -13,6 +13,7 @@ var routes = require('./routes'),
 	users = require('./routes/users');
   resetpasswd = require('./routes/resetpasswd');
   profile = require('./routes/profile');
+  profile_edit = require('./routes/profile_edit');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/register', register);
 app.use('/users', users);
 app.use('/resetpasswd', resetpasswd);
 app.use('/profile', profile);
+app.use('/profile/edit', profile_edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
