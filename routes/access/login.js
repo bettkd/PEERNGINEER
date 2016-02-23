@@ -16,9 +16,13 @@ router.get('/', function(req, res) {
 
 	viewObj.err = null;
 	viewObj.email = null;
-	viewObj.newUser = null;
+	viewObj.newuser = null;
+	viewObj.reset = null;
 	if (req.query.isNew){
-		viewObj.newUser = true;
+		viewObj.newuser = "Account successfully created! Login with the temporary password sent to your email.";
+	}
+	if (req.query.reset){
+		viewObj.reset = "Password reset successful! Login with the temporary password sent to your email.";
 	}
 	console.log(viewObj.new)
 	res.render('access/login', viewObj);
@@ -29,7 +33,8 @@ router.post('/', function(req, res){
 	var email = req.body.email;
 	var password = req.body.password
 
-	viewObj.newUser = null;
+	viewObj.newuser = null;
+	viewObj.reset = null;
 
 	// Create a callback to handle the result of the authentication
 	function authHandler(error, authData) {
