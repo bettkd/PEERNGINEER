@@ -15,6 +15,7 @@ var routes = require('./routes'),
 	logout = require('./routes/access/logout'),
 	register = require('./routes/access/register'),
 	resetpasswd = require('./routes/access/resetpasswd'),
+	changepasswd = require('./routes/access/changepasswd'),
 	users = require('./routes/user/users'),
 	profile = require('./routes/user/profile'),
 	profile_edit = require('./routes/user/profile_edit');
@@ -59,6 +60,7 @@ app.use('/access/login', login);
 app.use('/access/logout', logout);
 app.use('/access/register', register);
 app.use('/access/resetpasswd', resetpasswd);
+app.use('/access/changepasswd', changepasswd);
 app.use('/user/users', users);
 app.use('/user/profile', profile);
 app.use('/user/profile_edit', profile_edit);

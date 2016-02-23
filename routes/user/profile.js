@@ -40,5 +40,6 @@ router.get('/', function(req, res) {
 });
 
 
+// TODO: Allow a way for users to change their password through the route /access/changepasswd if it can be done on a modal form, nice!
 
 module.exports = router;

@@ -5,6 +5,9 @@ block content
 		.login
 			h1.heading Login
 			form(id="frmlogin" action="/access/login" method="post")
+				if newUser
+					.success
+						p Account successfully created! Login with the temporary password sent to your email. 
 				if err
 					.errors
 						p= err
