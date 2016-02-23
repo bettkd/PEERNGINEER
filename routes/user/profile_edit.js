@@ -12,6 +12,7 @@ router.get('/', function(req, res) {
 	var authData = ref.getAuth();
 	if (authData) {
 		viewObj.user = authData;
+		console.log(authData);
 		res.render('user/profile_edit', viewObj)
 	} else {
 		console.log("User not authenticated");

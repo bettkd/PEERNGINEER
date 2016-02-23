@@ -1,8 +1,23 @@
 extends ../layouts/nonav
 
 block content
+	- var uname = user.password.email.split('@')[0]
 	#edit-profile
 		.edit-profile
 			form.row
+				input(type="hidden" value="#{umane}")
+				.gravatar.col-xs-12.col-sm-5.col-md-3
+					img(src="#{user.password.profileImageURL}")
+					h3.uname @#{uname}
+				.user-info.col-xs-12.col-sm-7.col-md-8
+					.field.fifty
+						label(for="firstname") First Name
+						input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
+					.field.fifty
+						label(for="lastname") Last Name
+						input#lastname(type="text", name="lastname", value= (!!lastname) ? lastname : "")
+					.field
+						label(for="bio") Bio
+						textarea#bio.focus(rows="3", name="bio", value= (!!bio) ? bio : "")
 				
 	

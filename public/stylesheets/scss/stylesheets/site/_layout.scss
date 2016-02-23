@@ -22,8 +22,9 @@ html {
 			width: 80px;
 			border-radius: 50%;
 			border: none;
-			background-color: $green;
+			background-color: $blue;
 			box-shadow: $def-box;
+			@include transition(background-color 0.3s linear);
 
 			.nonav-back-btn {
 				display: block;
@@ -52,6 +53,10 @@ html {
 					bottom: 4px;
 					@include transform(rotate(-45deg));
 				}
+			}
+
+			&:hover {
+				background-color: $green;
 			}
 		}
 	}

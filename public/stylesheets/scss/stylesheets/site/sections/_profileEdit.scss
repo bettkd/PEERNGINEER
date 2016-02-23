@@ -9,5 +9,28 @@
 		padding: 20px;
 		box-shadow: $def-box;
 		background-color: white;
+
+		form {
+			margin: 0 auto;
+
+			.gravatar {
+				padding: 10px;
+				text-align: center;
+
+				img {
+					width: 70%;
+					border-radius: 50%;
+				}
+
+				.uname {
+					margin: 0;
+				}
+			}
+
+			.user-info {
+				padding: 10px;
+				text-align: center;
+			}
+		}
 	}
 }

@@ -28,7 +28,7 @@ form {
 			font-weight: 300;
 		}
 
-		input {
+		input, textarea {
 			width: 100%;
 			padding: 10px;
 			font-size: 1.5em;
@@ -53,6 +53,15 @@ form {
 			border: none;
 			cursor: pointer;
 			font-size: 1.3em;
+		}
+
+		&.fifty {
+
+			@media all and (min-width: 992px) {
+				display: inline-block;
+				width: 50%;
+				padding: 10px 5px;
+			}
 		}
 	}
 }
