@@ -24,6 +24,28 @@ router.get('/', function(req, res) {
 	}
 });
 
+router.post('/', function(req, res) {
+	var username = req.body.username;
+	//setup data for saving
+	var userRef = ref.child('users');
+	userRef.push().set({
+			username: req.body.username,
+			first : req.body.firstname,
+			last : req.body.lastname,
+			fullname : [req.body.firstname, req.body.lastname].join(' '),
+			email: req.body.email,
+			bio : req.body.bio,
+			phone : req.body.phone,
+			githubID : req.body.githubID,
+			linkedinID : req.body.linkedinID,
+			facebookID : req.body.facebookID,
+			major: req.body.major
+	}, function(err) {
+		if(err) throw err;
 
+		console.log('Saved data.');
+		res.redirect('/user/profile');
+	})
+});
 
 module.exports = router;
