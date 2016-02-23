@@ -11,7 +11,7 @@ var query;
 
 
 router.get('/', function(req, res) {
-	// check if user is logged in
+		// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
 		return res.redirect('/user/profile');

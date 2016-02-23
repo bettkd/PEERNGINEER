@@ -1,11 +1,12 @@
 extends ../layouts/nonav
 
 block content
-	- var uname = user.password.email.split('@')[0]
+	- var uname = auth.password.email.split('@')[0]
 	
 	form#edit-profile(action="/user/profile_edit", method="post", novalidate)
 		input(type="hidden", name="username", value="#{uname}")
-		input(type="hidden", name="email", value="#{user.password.email}")
+		input(type="hidden", name="email", value="#{auth.password.email}")
+		input(type="hidden", name="_id", value="#{auth.uid}")
 		if isNew
 			.edit-profile.complete-profile
 				h3 Complete your profile.
@@ -13,7 +14,7 @@ block content
 		.edit-profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{user.password.profileImageURL}")
+					img(src="#{auth.password.profileImageURL}")
 					h3.uname @#{uname}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					.field.fifty
