@@ -5,7 +5,10 @@ var express = require('express'),
 
 var viewObj = {
 	title: 'Login | PEERNGINEER'
-}
+};
+var query;
+
+
 
 router.get('/', function(req, res) {
 	// check if user is logged in
@@ -18,6 +21,7 @@ router.get('/', function(req, res) {
 	viewObj.email = null;
 	viewObj.newUser = null;
 	if (req.query.isNew){
+		query = req.query;
 		viewObj.newUser = true;
 	}
 	console.log(viewObj.new)
@@ -27,7 +31,7 @@ router.get('/', function(req, res) {
 // MARK : Login Existing User
 router.post('/', function(req, res){
 	var email = req.body.email;
-	var password = req.body.password
+	var password = req.body.password;
 
 	viewObj.newUser = null;
 
@@ -39,9 +43,10 @@ router.post('/', function(req, res){
 			viewObj.email = email;
 			res.render('access/login', viewObj)
 		} else {
+			console.log(query);
 			//check if user is just registering
 			//if true redirect to change password
-			if(req.query && req.query.isNew && req.query.isNew === 'true') {
+			if(query && query.isNew && query.isNew === 'true') {
 				return res.redirect('/access/changepasswd');
 			}
 
