@@ -27,9 +27,15 @@ app.set('view engine', 'jade');
 
 //set locals
 app.use(function(req, res, next) {
+
+	// check if user logged in
 	if(ref.getAuth()) {
-		res.locals.user = true;
+		res.locals.isUser = true;
 	}
+
+	//get page referer
+	res.locals.referer = req.get('Referrer');
+
 	next();
 });
 

@@ -1,60 +1,56 @@
-extends ../layouts/layout
+extends ../layouts/nonav
 
 block content
-	h1= title
-	p User: @#{username}
-	.field
-		Image <img src="#{profileImageURL}" alt = "profImg" align="left">
-	.field
-		label(for="firstname") First Name:
-		input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
-	.field
-		label(for="lastname") Last Name:
-		input#lastname.focus(type="text", name="lastname", value= (!!lastname) ? lastname : "")
-	.field
-		label(for="bio") Bio:
-		textarea#bio.focus(rows="3", name="bio", value= (!!bio) ? bio : "")
-
-	h2 Contact Info
-	.field
-		label(for="phone") Phone:
-		input#phone.focus(type="text", name="phone", value= (!!phone) ? phone : "")
-	.field
-		label(for="linkedinID") LinkedIn ID:
-		input#linkedinID.focus(type="text", name="linkedinID", value= (!!linkedinID) ? linkedinID : "")
-	.field
-		label(for="facebookID") Facebook ID:
-		input#facebookID.focus(type="text", name="facebookID", value= (!!facebookID) ? facebookID : "")
-	.field
-		label(for="githubID") GitHub ID:
-		input#githubID.focus(type="text", name="githubID", value= (!!githubID) ? githubID : "")
-
-	h2 Education
-	.field
-		label(for="major") Major:
-		input#major.focus(type="text", name="major", value= (!!major) ? major : "")
-	.field
-		label(for="classification") Classification:
-		input#classification.focus(type="text", name="classification", value= (!!classification) ? classification : "")
-
-	h2 Mentoring
-	if interestedtopics
-		p Interested Topics:
-			ul 
-				each val in interestedtopics
-					li
-						input#val.focus(type="text", name="val", value= (!!val) ? val : "")
+	- var uname = user.password.email.split('@')[0]
+	form#edit-profile
+		input(type="hidden", name="username", value="#{umane}")
+		if isNew
+			.edit-profile.complete-profile
+				h3 Complete your profile.
+				
+		.edit-profile
+			.row
+				.gravatar.col-xs-12.col-sm-5.col-md-3
+					img(src="#{user.password.profileImageURL}")
+					h3.uname @#{uname}
+				.user-info.col-xs-12.col-sm-7.col-md-9
+					.field.fifty
+						label(for="firstname") First Name
+						input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
+					.field.fifty
+						label(for="lastname") Last Name
+						input#lastname(type="text", name="lastname", value= (!!lastname) ? lastname : "")
+					.field
+						label(for="bio") Bio
+						textarea#bio(name="bio", value= (!!bio) ? bio : "")
+		
+		.edit-profile
+			.row
+				h2.heading Contact Info
+				.field.fifty
+					label(for="phone") Phone:
+					input#phone(type="text", name="phone", value= (!!phone) ? phone : "")
+				.field.fifty
+					label(for="linkedinID") LinkedIn ID:
+					input#linkedinID(type="text", name="linkedinID", value= (!!linkedinID) ? linkedinID : "")
+				.field.fifty
+					label(for="facebookID") Facebook ID:
+					input#facebookID(type="text", name="facebookID", value= (!!facebookID) ? facebookID : "")
+				.field.fifty
+					label(for="githubID") GitHub ID:
+					input#githubID(type="text", name="githubID", value= (!!githubID) ? githubID : "")
 					
-	if mentortopics
-		p Mentor Topics:
-			ul 
-				each val in mentortopics
-					li= val
-	if availability
-		p Availability Schedule:
-			ul 
-				each val in availability
-					li
-						input#val.focus(type="text", name="val", value= (!!val) ? val : "")
-	.field
-					button.btn(id="btnSave") Save
+		.edit-profile
+			.row
+				h2.heading Education
+				.field.fifty
+					label(for="major") Major:
+					input#major(type="text", name="major", value= (!!major) ? major : "")
+				.field.fifty
+					label(for="classification") Classification:
+					select#classification(name="classification")
+						option(value="freshman") Freshman
+						option(value="sophomore") Sophomore
+						option(value="junior") Junior
+						option(value="senior") Senior
+						option(value="graduate") Graduate
