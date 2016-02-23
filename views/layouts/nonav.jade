@@ -10,6 +10,9 @@ html
 	
 	body.nonav
 		
+		a#nonav-back-btn(href="#{referer}")
+			span.nonav-back-btn
+			
 		block content
 		
 		script(src="http://code.jquery.com/jquery-1.12.0.min.js", type="text/javascript")

@@ -13,7 +13,47 @@ html {
 	background-color: $lightgray;
 
 	&.nonav {
-		
+
+		#nonav-back-btn {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			padding: 39px 30px;
+			width: 80px;
+			border-radius: 50%;
+			border: none;
+			background-color: $green;
+			box-shadow: $def-box;
+
+			.nonav-back-btn {
+				display: block;
+				width: 100%;
+				border-top: 2px solid white;
+				position: relative;
+
+				&::before {
+					content: '';
+					display: block;
+					width: 60%;
+					border-top: 2px solid white;
+					position: absolute;
+					left: -2px;
+					bottom: -4px;
+					@include transform(rotate(45deg));
+				}
+
+				&::after {
+					content: '';
+					display: block;
+					width: 60%;
+					border-top: 2px solid white;
+					position: absolute;
+					left: -2px;
+					bottom: 4px;
+					@include transform(rotate(-45deg));
+				}
+			}
+		}
 	}
 
 	&.default {
