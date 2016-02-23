@@ -20,7 +20,7 @@ router.post('/', function(req, res){
 	}, function(error) {
 		if (error === null) {
 			console.log("Password reset email sent successfully");
-			res.redirect("/access/login")
+			res.redirect("/access/login?reset=true")
 		} else {
 			console.log("Error sending password reset email:", error);
 			viewObj.err = error;

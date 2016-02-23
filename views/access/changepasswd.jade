@@ -1,0 +1,22 @@
+extends ../layouts/nonav
+
+block content
+	#changepasswd
+		.changepasswd
+			h1.heading Change Password
+			h3 @#{username}
+			form(id="frmRegister" action="/access/changepasswd" method="post")
+				if err
+					.errors
+						p=err
+				.field
+					label(for="password") Current Password: <br>
+					input#password(type="password", name="password", value=(!!password) ? password : "")
+				.field
+					label(for="newpassword") New Password: <br>
+					input#newpassword(type="password", name="newpassword", value="")
+				.field
+					label(for="confirmpassword") Confirm Password: <br>
+					input#confirmpassword(type="password", name="confirmpassword", value="")
+				.field
+					button.btn(id="btnRegister") Change Password

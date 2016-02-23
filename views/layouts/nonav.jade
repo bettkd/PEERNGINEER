@@ -14,8 +14,11 @@ html
 	
 	body.nonav
 		
-		a#nonav-back-btn(href="#{referer}")
-			span.nonav-back-btn
+		#home-back-cont
+			a#nonav-home-btn(href="/")
+				span.glyphicon.glyphicon-home
+			a#nonav-back-btn(href="#{referer}")
+				span.nonav-back-btn
 			
 		block content
 		

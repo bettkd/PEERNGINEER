@@ -5,10 +5,13 @@ var express = require('express'),
 
 var viewObj = {
 	title: 'Login | PEERNGINEER'
-}
+};
+var query;
+
+
 
 router.get('/', function(req, res) {
-	// check if user is logged in
+		// check if user is logged in
 	// redirect if true
 	if(ref.getAuth()) {
 		return res.redirect('/user/profile');
@@ -16,13 +19,27 @@ router.get('/', function(req, res) {
 
 	viewObj.err = null;
 	viewObj.email = null;
+	viewObj.newuser = null;
+	viewObj.reset = null;
+	if (req.query.isNew){
+		query = req.query;
+		viewObj.newUser = true;
+		viewObj.newuser = "Account successfully created! Login with the temporary password sent to your email.";
+	}
+	if (req.query.reset){
+		viewObj.reset = "Password reset successful! Login with the temporary password sent to your email.";
+	}
+	console.log(viewObj.new)
 	res.render('access/login', viewObj);
 });
 
 // MARK : Login Existing User
 router.post('/', function(req, res){
 	var email = req.body.email;
-	var password = req.body.password
+	var password = req.body.password;
+
+	viewObj.newuser = null;
+	viewObj.reset = null;
 
 	// Create a callback to handle the result of the authentication
 	function authHandler(error, authData) {
@@ -32,13 +49,19 @@ router.post('/', function(req, res){
 			viewObj.email = email;
 			res.render('access/login', viewObj)
 		} else {
+			console.log(query);
+			//check if user is just registering
+			//if true redirect to change password
+			if(query && query.isNew && query.isNew === 'true') {
+				return res.redirect('/access/changepasswd');
+			}
+
 			console.log("Authenticated successfully with payload:", authData);
 			res.redirect("/user/profile")
 	 	}
 	}
 
-	if(email.indexOf('@') === -1)
-	{
+	if(email.indexOf('@') === -1) {
 		email = email.concat("@claflin.edu");
 	}
 

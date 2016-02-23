@@ -26,21 +26,8 @@ router.post('/', function(req, res){
 
 	//grab data from request
 	var email = req.body.email;
-	var password = req.body.password;
-	var confirmpassword = req.body.c_password;
 
-	// Create a callback to handle the result of the authentication
-	function authHandler(error, authData) {
-		if (error) {
-			console.log("Login Failed!", error);
-			viewObj.err = error
-			res.render('register', viewObj)
-		} else {
-			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/user/profile_edit?isNew=true")
-		}
-	}
-
+	// Handle errors in creating account
 	function handleError(error) {
 		viewObj.err = error
 		viewObj.email = email
@@ -49,14 +36,11 @@ router.post('/', function(req, res){
 
 	if (email.indexOf("@claflin.edu") < 0) {
 		handleError("Error: Register with your Claflin email.");
-	} else if (password != confirmpassword){
-		handleError("Error: Paswords do not match.");
-	} else if (password.length < 6) {
-		handleError("Error: Paswords is too short.");
 	} else {
+		// Create the user
 		ref.createUser({
 			email: email,
-			password: password,
+			password: "temporaryPassword"
 		}, function(error, userData) {
 			if (error) {
 				switch (error.code) {
@@ -71,12 +55,20 @@ router.post('/', function(req, res){
 						console.log("Error creating user:", error);
 				}
 			} else {
-
-				// log new user in
-				ref.authWithPassword({
-					email: email,
-					password: password
-				}, authHandler);
+				// reset the user's password -> send them confirmation email -> redirect them to login page
+				ref.resetPassword({
+					email : email
+				}, function(error) {
+					if (error === null) {
+						console.log("Password reset email sent successfully");
+						res.redirect("/access/login?isNew=true")
+					} else {
+						console.log("Error sending password reset email:", error);
+						viewObj.err = error;
+						viewObj.email = email;
+						res.render('access/resetpasswd', viewObj)
+					}
+				});
 			}
 		});
 	}

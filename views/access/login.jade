@@ -5,6 +5,12 @@ block content
 		.login
 			h1.heading Login
 			form(id="frmlogin" action="/access/login" method="post")
+				if newuser
+					.success
+						p= newuser
+				if reset
+					.success
+						p= reset 
 				if err
 					.errors
 						p= err

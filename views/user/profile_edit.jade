@@ -1,9 +1,13 @@
 extends ../layouts/nonav
 
 block content
-	- var uname = user.password.email.split('@')[0]
-	form#edit-profile
-		input(type="hidden", name="username", value="#{umane}")
+	- var uname = auth.password.email.split('@')[0]
+	
+	form#edit-profile(action="/user/profile_edit", method="post", novalidate)
+		input(type="hidden", name="username", value="#{uname}")
+		input(type="hidden", name="email", value="#{auth.password.email}")
+		input(type="hidden", name="_id", value="#{auth.uid}")
+		
 		if isNew
 			.edit-profile.complete-profile
 				h3 Complete your profile.
@@ -11,46 +15,51 @@ block content
 		.edit-profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{user.password.profileImageURL}")
+					img(src="#{auth.password.profileImageURL}")
 					h3.uname @#{uname}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					.field.fifty
 						label(for="firstname") First Name
-						input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
+						input#firstname.focus(type="text", name="firstname", value= (!!user.first) ? user.first : "")
 					.field.fifty
 						label(for="lastname") Last Name
-						input#lastname(type="text", name="lastname", value= (!!lastname) ? lastname : "")
+						input#lastname(type="text", name="lastname", value= (!!user.last) ? user.last : "")
 					.field
 						label(for="bio") Bio
-						textarea#bio(name="bio", value= (!!bio) ? bio : "")
+						textarea#bio(name="bio") #{user.bio || ""}
 		
 		.edit-profile
 			.row
 				h2.heading Contact Info
 				.field.fifty
 					label(for="phone") Phone:
-					input#phone(type="text", name="phone", value= (!!phone) ? phone : "")
+					input#phone(type="text", name="phone", value= (!!user.phone) ? user.phone : "")
 				.field.fifty
 					label(for="linkedinID") LinkedIn ID:
-					input#linkedinID(type="text", name="linkedinID", value= (!!linkedinID) ? linkedinID : "")
+					input#linkedinID(type="text", name="linkedinID", value= (!!user.linkedinID) ? user.linkedinID : "")
 				.field.fifty
 					label(for="facebookID") Facebook ID:
-					input#facebookID(type="text", name="facebookID", value= (!!facebookID) ? facebookID : "")
+					input#facebookID(type="text", name="facebookID", value= (!!user.facebookID) ? user.facebookID : "")
 				.field.fifty
 					label(for="githubID") GitHub ID:
-					input#githubID(type="text", name="githubID", value= (!!githubID) ? githubID : "")
+					input#githubID(type="text", name="githubID", value= (!!user.githubID) ? user.githubID : "")
 					
 		.edit-profile
 			.row
 				h2.heading Education
 				.field.fifty
 					label(for="major") Major:
-					input#major(type="text", name="major", value= (!!major) ? major : "")
+					input#major(type="text", name="major", value= (!!user.major) ? user.major : "")
 				.field.fifty
 					label(for="classification") Classification:
 					select#classification(name="classification")
-						option(value="freshman") Freshman
-						option(value="sophomore") Sophomore
-						option(value="junior") Junior
-						option(value="senior") Senior
-						option(value="graduate") Graduate
+						option(value="freshman" selected= (user.classification === "freshman") ? true : null) Freshman
+						option(value="sophomore" selected= (user.classification === "sophomore") ? true : null) Sophomore
+						option(value="junior" selected= (user.classification === "junior") ? true : null) Junior
+						option(value="senior" selected= (user.classification === "senior") ? true : null) Senior
+						option(value="graduate" selected= (user.classification === "graduate") ? true : null) Graduate
+						
+		.edit-profile
+			.row
+				.field
+					button.btn(id="btnUpdate", type="submit") Update
