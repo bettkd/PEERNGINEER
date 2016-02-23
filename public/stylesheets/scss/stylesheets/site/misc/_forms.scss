@@ -15,6 +15,31 @@ form {
 		}
 	}
 
+	.warnings {
+		padding: 10px;
+		text-align: left;
+		background-color: $yellow;
+		border-radius: 2px;
+
+		p {
+			color: white;
+			margin: 0;
+		}
+	}
+
+	.success {
+		padding: 10px;
+		text-align: left;
+		background-color: $green;
+		border-radius: 2px;
+
+		p {
+			color: white;
+			margin: 0;
+		}
+	}
+
+
 	.field {
 		width: 100%;
 		padding: 10px 0;

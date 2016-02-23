@@ -19,7 +19,6 @@ router.get('/', function(req, res) {
 		console.log("User not authenticated");
 		return res.redirect('/access/login');
 	}
-
 	if(req.query) {
 		viewObj.isNew = req.query.isNew;
 	}
