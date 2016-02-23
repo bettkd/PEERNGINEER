@@ -39,13 +39,18 @@ router.post('/', function(req, res){
 			viewObj.email = email;
 			res.render('access/login', viewObj)
 		} else {
+			//check if user is just registering
+			//if true redirect to change password
+			if(req.query && req.query.isNew && req.query.isNew === 'true') {
+				return res.redirect('/access/changepasswd');
+			}
+
 			console.log("Authenticated successfully with payload:", authData);
 			res.redirect("/user/profile")
 	 	}
 	}
 
-	if(email.indexOf('@') === -1)
-	{
+	if(email.indexOf('@') === -1) {
 		email = email.concat("@claflin.edu");
 	}
 
