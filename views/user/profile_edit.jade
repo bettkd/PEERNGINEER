@@ -1,0 +1,56 @@
+extends ../layouts/nonav
+
+block content
+	- var uname = user.password.email.split('@')[0]
+	form#edit-profile
+		input(type="hidden", name="username", value="#{umane}")
+		if isNew
+			.edit-profile.complete-profile
+				h3 Complete your profile.
+				
+		.edit-profile
+			.row
+				.gravatar.col-xs-12.col-sm-5.col-md-3
+					img(src="#{user.password.profileImageURL}")
+					h3.uname @#{uname}
+				.user-info.col-xs-12.col-sm-7.col-md-9
+					.field.fifty
+						label(for="firstname") First Name
+						input#firstname.focus(type="text", name="firstname", value= (!!firstname) ? firstname : "")
+					.field.fifty
+						label(for="lastname") Last Name
+						input#lastname(type="text", name="lastname", value= (!!lastname) ? lastname : "")
+					.field
+						label(for="bio") Bio
+						textarea#bio(name="bio", value= (!!bio) ? bio : "")
+		
+		.edit-profile
+			.row
+				h2.heading Contact Info
+				.field.fifty
+					label(for="phone") Phone:
+					input#phone(type="text", name="phone", value= (!!phone) ? phone : "")
+				.field.fifty
+					label(for="linkedinID") LinkedIn ID:
+					input#linkedinID(type="text", name="linkedinID", value= (!!linkedinID) ? linkedinID : "")
+				.field.fifty
+					label(for="facebookID") Facebook ID:
+					input#facebookID(type="text", name="facebookID", value= (!!facebookID) ? facebookID : "")
+				.field.fifty
+					label(for="githubID") GitHub ID:
+					input#githubID(type="text", name="githubID", value= (!!githubID) ? githubID : "")
+					
+		.edit-profile
+			.row
+				h2.heading Education
+				.field.fifty
+					label(for="major") Major:
+					input#major(type="text", name="major", value= (!!major) ? major : "")
+				.field.fifty
+					label(for="classification") Classification:
+					select#classification(name="classification")
+						option(value="freshman") Freshman
+						option(value="sophomore") Sophomore
+						option(value="junior") Junior
+						option(value="senior") Senior
+						option(value="graduate") Graduate

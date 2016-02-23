@@ -1,65 +1,31 @@
-var express = require('express');
-var router = express.Router();
-var Firebase = require("firebase");
+var express = require('express'),
+	router = express.Router(),
+	Firebase = require("firebase"),
+	ref = new Firebase("https://peerngineer.firebaseio.com");
 
-var title = "Peerngineer Program"
-
-//Firebase backend
-var ref = new Firebase("https://peerngineer.firebaseio.com");
+var viewObj = {
+	title: 'Home | PEERNGINEER',
+	user: false
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: title });
-});
 
-router.get('/register', function(req, res, next) {
-  res.render('index', { title: title });
-});
-
-
-// MARK : Register New User
-router.post('/register', function(req, res){
-  var email = req.body._email;
-  var password = req.body._password
-  var confirmpassword = req.body.c_password
-  console.log(email)
-	// Create a callback to handle the result of the authentication
-	function authHandler(error, authData) {
-	  if (error) {
-	    console.log("Login Failed!", error);
-	    res.render('index', { _err_message: error, title: title })
-	  } else {
-	    console.log("Authenticated successfully with payload:", authData);
-	    res.redirect("/users")
-	  }
+	// check if user is logged in
+	// redirect if true
+	if(ref.getAuth()) {
+		viewObj.user = true;
+		return res.render('index', viewObj);
 	}
-	if (email.indexOf("@claflin.edu") < 0) {
-		res.render('index', { _err_message: "Error: Register with your Claflin email.", title: title })
-	} else if (password != confirmpassword){
-		res.render('index', { _err_message: "Error: Paswords do not match.", title: title })
-	} else {
-		ref.createUser({
-			email: email,
-			password: password,
-		}, function(error, userData) {
-		  if (error) {
-		    switch (error.code) {
-		      case "EMAIL_TAKEN":
-		        console.log("The new user account cannot be created because the email is already in use.");
-		        break;
-		      case "INVALID_EMAIL":
-		        console.log("The specified email is not a valid email.");
-		        break;
-		      default:
-		        console.log("Error creating user:", error);
-		    }
-		    res.render('index', { _err_message: error, title: title })
-		  } else {
-		    console.log("Successfully created user account with uid:", userData.uid);
-		    res.redirect("/users")
-		  }
-		});
+
+	// user logged out
+	if(req.query.u === 'false') {
+		viewObj.user = false;
+		return res.render('index', viewObj);
 	}
+
+	res.render('index', viewObj);
 });
+
 
 module.exports = router;

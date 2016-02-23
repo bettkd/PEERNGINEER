@@ -1,0 +1,20 @@
+extends ../layouts/nonav
+
+block content
+	#login
+		.login
+			h1.heading Login
+			form(id="frmlogin" action="/access/login" method="post")
+				if err
+					.errors
+						p= err
+				.field
+					label(for="email") Username
+					input#email.focus(type="text", name="email", value= (!!email) ? email : "")
+				.field
+					label(for="password") Password
+					input#password(type="password", name="password")
+				.field
+					button.btn(id="btnLogin") Login
+			p Forgot your password? <a href="/access/resetpasswd">Reset Password</a>
+			p Don't have an account? <a href="/access/register">Register</a>

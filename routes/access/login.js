@@ -3,10 +3,20 @@ var express = require('express'),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
+var viewObj = {
+	title: 'Login | PEERNGINEER'
+}
+
 router.get('/', function(req, res) {
-	res.render('login', {
-		title: 'Login'
-	});
+	// check if user is logged in
+	// redirect if true
+	if(ref.getAuth()) {
+		return res.redirect('/user/profile');
+	}
+
+	viewObj.err = null;
+	viewObj.email = null;
+	res.render('access/login', viewObj);
 });
 
 // MARK : Login Existing User
@@ -18,11 +28,18 @@ router.post('/', function(req, res){
 	function authHandler(error, authData) {
 		if (error) {
 			console.log("Login Failed!", error);
-			res.render('login', { err_message: error, title: 'title' })
+			viewObj.err = error;
+			viewObj.email = email;
+			res.render('access/login', viewObj)
 		} else {
 			console.log("Authenticated successfully with payload:", authData);
-			res.redirect("/users")
+			res.redirect("/user/profile")
 	 	}
+	}
+
+	if(email.indexOf('@') === -1)
+	{
+		email = email.concat("@claflin.edu");
 	}
 
 	if (email.indexOf("@claflin.edu") > -1) {
@@ -31,7 +48,9 @@ router.post('/', function(req, res){
 			password : password
 		}, authHandler);
 	} else {
-		res.render('login', { err_message: "Error: Login with your Claflin email.", title: 'title' })
+		viewObj.err = "Error: Login with your Claflin email.";
+		viewObj.email = email;
+		res.render('access/login', viewObj)
 	}
 });
 

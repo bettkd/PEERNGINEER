@@ -6,16 +6,38 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 
+//get firebase
+var Firebase = require('firebase'),
+	ref = new Firebase("https://peerngineer.firebaseio.com");
+
 var routes = require('./routes'),
-	login = require('./routes/login'),
-	register = require('./routes/register'),
-	users = require('./routes/users');
+	login = require('./routes/access/login'),
+	logout = require('./routes/access/logout'),
+	register = require('./routes/access/register'),
+	resetpasswd = require('./routes/access/resetpasswd'),
+	users = require('./routes/user/users'),
+	profile = require('./routes/user/profile'),
+	profile_edit = require('./routes/user/profile_edit');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//set locals
+app.use(function(req, res, next) {
+
+	// check if user logged in
+	if(ref.getAuth()) {
+		res.locals.isUser = true;
+	}
+
+	//get page referer
+	res.locals.referer = req.get('Referrer');
+
+	next();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -33,10 +55,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/login', login);
-app.use('/register', register);
-app.use('/users', users);
-
+app.use('/access/login', login);
+app.use('/access/logout', logout);
+app.use('/access/register', register);
+app.use('/access/resetpasswd', resetpasswd);
+app.use('/user/users', users);
+app.use('/user/profile', profile);
+app.use('/user/profile_edit', profile_edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
