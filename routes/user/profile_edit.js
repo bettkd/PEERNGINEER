@@ -10,6 +10,7 @@ var viewObj = {
 router.get('/', function(req, res) {
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
+
 	if (authData) {
 		viewObj.user = authData;
 		console.log(authData);
@@ -18,7 +19,10 @@ router.get('/', function(req, res) {
 		console.log("User not authenticated");
 		return res.redirect('/access/login');
 	}
-	;
+
+	if(req.query) {
+		viewObj.isNew = req.query.isNew;
+	}
 });
 
 

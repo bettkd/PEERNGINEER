@@ -1,16 +1,17 @@
-#edit-profile {
+form#edit-profile {
 	width: 100%;
 	padding: 20px;
 	margin-top: 50px;
 
 	.edit-profile {
-		max-width: 1366px;
-		margin: 0 auto;
+		max-width: 1280px;
+		margin: 0 auto 15px;;
 		padding: 20px;
 		box-shadow: $def-box;
 		background-color: white;
+		@include transition(padding 0.3s);
 
-		form {
+		.row {
 			margin: 0 auto;
 
 			.gravatar {
@@ -31,6 +32,18 @@
 				padding: 10px;
 				text-align: center;
 			}
+		}
+
+		&.complete-profile {
+			text-align: center;
+
+			h3 {
+				margin: 0;
+			}
+		}
+
+		@media all and (min-width: 768px) {
+			padding: 30px 70px;
 		}
 	}
 }
