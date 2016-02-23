@@ -17,9 +17,10 @@ router.get('/', function(req, res, next) {
 		var email = ref.getAuth().password.email;
 		viewObj.email = email;
 		viewObj.username = email.substring(0, email.lastIndexOf("@"));
-		res.render('access/changepasswd', viewObj);
+		return res.render('access/changepasswd', viewObj);
 	}
-		return res.redirect('/access/login');
+
+	res.redirect('/access/login');
 });
 
 // MARK : Change password for user
@@ -29,19 +30,19 @@ router.post('/', function(req, res){
 	var confirmpassword = req.body.confirmpassword;
 
 	function handleError(error) {
-		viewObj.err = error
-		viewObj.password = null
-		res.render('access/changepasswd', viewObj)
+		viewObj.err = error;
+		viewObj.password = null;
+		res.render('access/changepasswd', viewObj);
 	}
 
 	if (newpassword != confirmpassword) {
-		viewObj.err = "Error: Paswords do not match."
-		viewObj.password = password
-		res.render('access/changepasswd', viewObj)
+		viewObj.err = "Error: Paswords do not match.";
+		viewObj.password = password;
+		res.render('access/changepasswd', viewObj);
 	} if (newpassword.length < 6) {
-		viewObj.err = "Error: Paswords is too short."
-		viewObj.password = password
-		res.render('access/changepasswd', viewObj)
+		viewObj.err = "Error: Paswords is too short.";
+		viewObj.password = password;
+		res.render('access/changepasswd', viewObj);
 	}
 
 	ref.changePassword({
@@ -61,7 +62,7 @@ router.post('/', function(req, res){
 					handleError("Error changing password:", error);
 			}
 		} else {
-			res.redirect("/user/profile_edit?changedpasswd=true")
+			res.redirect("/user/profile_edit?isNew=true")
 			console.log("User password changed successfully!");
 		}
 	});
