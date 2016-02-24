@@ -1,4 +1,5 @@
 extends ../layouts/nonav
+include ../mixins/dayTimePicker
 
 block content
 	- var uname = auth.password.email.split('@')[0]
@@ -58,7 +59,11 @@ block content
 						option(value="junior" selected= (user.classification === "junior") ? true : null) Junior
 						option(value="senior" selected= (user.classification === "senior") ? true : null) Senior
 						option(value="graduate" selected= (user.classification === "graduate") ? true : null) Graduate
-						
+		
+		.edit-profile
+			h2.heading Availability
+			+dayTimePicker
+
 		.edit-profile
 			.row
 				.field
