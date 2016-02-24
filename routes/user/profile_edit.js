@@ -57,7 +57,14 @@ router.post('/', function(req, res) {
 		linkedinID : req.body.linkedinID,
 		facebookID : req.body.facebookID,
 		major: req.body.major,
-		classification: req.body.classification
+		classification: req.body.classification,
+		availability: {
+			"monday": req.body["Monday-times"] || [],
+			"tuesday": req.body["Tuesday-times"] || [],
+			"wednesday": req.body["Wednesday-times"] || [],
+			"thursday": req.body["Thursday-times"] || [],
+			"friday": req.body["Friday-times"] || []
+		}
 	}
 
 	//set userRef
