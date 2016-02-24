@@ -12,11 +12,11 @@ router.get('/', function(req, res) {
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
 	if (authData) {
-
 		//get user data
 		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
 			console.log(snapshot.val());
 			id = snapshot.key();
+			viewObj.auth = authData;
 			viewObj.user = snapshot.val();
 		}, function (errorObject) {
 			console.log("The read failed: " + errorObject.code);

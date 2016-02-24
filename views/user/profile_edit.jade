@@ -26,7 +26,7 @@ block content
 						input#lastname(type="text", name="lastname", value= (!!user.last) ? user.last : "")
 					.field
 						label(for="bio") Bio
-						textarea#bio(name="bio") #{user.bio || ""}
+						textarea#bio(rows="5", name="bio") #{user.bio || ""}
 		
 		.edit-profile
 			.row
