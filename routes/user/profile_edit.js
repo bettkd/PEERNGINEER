@@ -39,47 +39,36 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var username = req.body.username;
-	//setup data for saving
+
+	//get user data from req
+	var userData = {
+		_id: req.body._id,
+		username: req.body.username,
+		first : req.body.firstname,
+		last : req.body.lastname,
+		fullname : [req.body.firstname, req.body.lastname].join(' '),
+		email: req.body.email,
+		bio : req.body.bio,
+		phone : req.body.phone,
+		githubID : req.body.githubID,
+		linkedinID : req.body.linkedinID,
+		facebookID : req.body.facebookID,
+		major: req.body.major,
+		classification: req.body.classification
+	}
+
+	//set userRef
 	var userRef = ref.child('users');
 
 	if(query.isNew === 'true') {
-		userRef.push().set({
-			_id: req.body._id,
-			username: req.body.username,
-			first : req.body.firstname,
-			last : req.body.lastname,
-			fullname : [req.body.firstname, req.body.lastname].join(' '),
-			email: req.body.email,
-			bio : req.body.bio,
-			phone : req.body.phone,
-			githubID : req.body.githubID,
-			linkedinID : req.body.linkedinID,
-			facebookID : req.body.facebookID,
-			major: req.body.major,
-			classification: req.body.classification
-		}, function(err) {
+		userRef.push().set(userData, function(err) {
 			if(err) throw err;
 
 			res.redirect('/user/profile');
 		});
 	} else {
 		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + id );
-		userRef.update({
-			_id: req.body._id,
-			username: req.body.username,
-			first : req.body.firstname,
-			last : req.body.lastname,
-			fullname : [req.body.firstname, req.body.lastname].join(' '),
-			email: req.body.email,
-			bio : req.body.bio,
-			phone : req.body.phone,
-			githubID : req.body.githubID,
-			linkedinID : req.body.linkedinID,
-			facebookID : req.body.facebookID,
-			major: req.body.major,
-			classification: req.body.classification
-		}, function(err) {
+		userRef.update(userData, function(err) {
 			if(err) throw err;
 
 			res.redirect('/user/profile');

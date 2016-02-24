@@ -13,6 +13,15 @@ router.get('/', function(req, res) {
 	var authData = ref.getAuth();
 	if (authData) {
 
+		//get user data
+		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
+			console.log(snapshot.val());
+			id = snapshot.key();
+			viewObj.user = snapshot.val();
+		}, function (errorObject) {
+			console.log("The read failed: " + errorObject.code);
+		});
+
 		res.render('user/profile', viewObj)
 	} else {
 		console.log("User not authenticated");
