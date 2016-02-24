@@ -6,10 +6,12 @@ var express = require('express'),
 
 var viewObj = {
 	title: 'Edit Profile | PEERNGINEER'
-}
+};
+var query, id;
 
 router.get('/', function(req, res) {
 	if(req.query) {
+		query = req.query;
 		viewObj.isNew = req.query.isNew;
 	}
 
@@ -23,13 +25,13 @@ router.get('/', function(req, res) {
 		//get user data
 		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
 			console.log(snapshot.val());
+			id = snapshot.key();
 			viewObj.user = snapshot.val();
 		}, function (errorObject) {
 			console.log("The read failed: " + errorObject.code);
 		});
 
 	} else {
-		console.log("User not authenticated");
 		return res.redirect('/access/login');
 	}
 
@@ -40,7 +42,9 @@ router.post('/', function(req, res) {
 	var username = req.body.username;
 	//setup data for saving
 	var userRef = ref.child('users');
-	userRef.push().set({
+
+	if(query.isNew === 'true') {
+		userRef.push().set({
 			_id: req.body._id,
 			username: req.body.username,
 			first : req.body.firstname,
@@ -54,12 +58,33 @@ router.post('/', function(req, res) {
 			facebookID : req.body.facebookID,
 			major: req.body.major,
 			classification: req.body.classification
-	}, function(err) {
-		if(err) throw err;
+		}, function(err) {
+			if(err) throw err;
 
-		console.log('Saved data.');
-		res.redirect('/user/profile');
-	})
+			res.redirect('/user/profile');
+		});
+	} else {
+		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + id );
+		userRef.update({
+			_id: req.body._id,
+			username: req.body.username,
+			first : req.body.firstname,
+			last : req.body.lastname,
+			fullname : [req.body.firstname, req.body.lastname].join(' '),
+			email: req.body.email,
+			bio : req.body.bio,
+			phone : req.body.phone,
+			githubID : req.body.githubID,
+			linkedinID : req.body.linkedinID,
+			facebookID : req.body.facebookID,
+			major: req.body.major,
+			classification: req.body.classification
+		}, function(err) {
+			if(err) throw err;
+
+			res.redirect('/user/profile');
+		})
+	}
 });
 
 module.exports = router;
