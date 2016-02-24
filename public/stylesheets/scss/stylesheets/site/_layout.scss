@@ -1,19 +1,11 @@
-* {
-	box-sizing: border-box;
-}
+&.nonav {
 
-body,
-html {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	font-size: 14px;
-	font-family: 'Open Sans', sans-serif;
-	background-color: $lightgray;
-
-	&.nonav {
-
+	#home-back-cont {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		
 		#nonav-back-btn {
 			position: absolute;
 			top: 10px;
@@ -72,73 +64,112 @@ html {
 			color: white;
 			@include transition(background-color 0.3s linear);
 		}
-	}
 
-	&.default {
-
-		#body {
-			width: 100%;
-			height: 100%;
-			padding: 103px 10px 10px;
+		#nonav-logout-btn {
+			position: absolute;
+			top: 20px;
+			left: 155px;
+			padding: 17px 20px;
+			border-radius: 50%;
+			border: none;
+			background-color: $red;
+			box-shadow: $def-box;
+			color: white;
+			@include transition(background-color 0.3s linear);
 		}
 	}
+}
 
-	h1 {
-		margin: 5px;
+&.default {
 
-		&.heading {
-			font-weight: 400;
-			text-transform: uppercase;
-			color: darken(gray, 15%);
-		}
-	}
-
-	a {
-		text-decoration: none;
-		border-bottom: 3px solid rgba($blue, 0.5);
-		@include transition(color 0.5s linear);
-
-		&:visited,
-		&:focus {
-			color: inherit;
-			text-decoration: none;
-		}
-	}
-
-	li {
-		list-style-type: none;
-	}
-
-	header {
+	#body {
 		width: 100%;
-		height: 103px;
-		margin: 0 auto;
-		padding: 20px;
-		background-color: $blue;
-		box-shadow: 0 1px 4px #333;
-		position: fixed;
-		top: 0;
-		left: 0;
+		height: 100%;
+		padding: 103px 10px 10px;
+	}
+}
 
-		#header {
-			position: relative;
-			width: 100%;
-			text-align: center;
+h1 {
+	margin: 5px;
 
-			.menu-btn {
-				width: 100px;
-				padding: 30px;
-				position: absolute;
-				left: 0;
-				cursor: pointer;
+	&.heading {
+		font-weight: 400;
+		text-transform: uppercase;
+		color: darken(gray, 15%);
+	}
+}
 
-				.btn-hrz-mid {
+a {
+	text-decoration: none;
+	border-bottom: 3px solid rgba($blue, 0.5);
+	@include transition(color 0.5s linear);
+
+	&:visited,
+	&:focus {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+li {
+	list-style-type: none;
+}
+
+header {
+	width: 100%;
+	height: 103px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: $blue;
+	box-shadow: 0 1px 4px #333;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	#header {
+		position: relative;
+		width: 100%;
+		text-align: center;
+
+		.menu-btn {
+			width: 100px;
+			padding: 30px;
+			position: absolute;
+			left: 0;
+			cursor: pointer;
+
+			.btn-hrz-mid {
+				display: block;
+				width: 100%;
+				position: relative;
+				border-top: 3px solid white;
+				@include transition(all 0.2s ease-in-out);
+
+				&::before {
+					content: '';
 					display: block;
-					width: 100%;
-					position: relative;
 					border-top: 3px solid white;
+					width: 100%;
+					position: absolute;
 					@include transition(all 0.2s ease-in-out);
+					left: 0;
+					top: -11px;
+				}
 
+				&:after {
+					content: '';
+					display: block;
+					border-bottom: 3px solid white;
+					width: 100%;
+					position: absolute;
+					@include transition(all 0.2s ease-in-out);
+					left: 0;
+					bottom: -8px;
+				}
+			}
+
+			&:hover {
+				.btn-hrz-mid {
 					&::before {
 						content: '';
 						display: block;
@@ -147,7 +178,7 @@ html {
 						position: absolute;
 						@include transition(all 0.2s ease-in-out);
 						left: 0;
-						top: -11px;
+						top: -15px;
 					}
 
 					&:after {
@@ -158,105 +189,77 @@ html {
 						position: absolute;
 						@include transition(all 0.2s ease-in-out);
 						left: 0;
-						bottom: -8px;
-					}
-				}
-
-				&:hover {
-					.btn-hrz-mid {
-						&::before {
-							content: '';
-							display: block;
-							border-top: 3px solid white;
-							width: 100%;
-							position: absolute;
-							@include transition(all 0.2s ease-in-out);
-							left: 0;
-							top: -15px;
-						}
-
-						&:after {
-							content: '';
-							display: block;
-							border-bottom: 3px solid white;
-							width: 100%;
-							position: absolute;
-							@include transition(all 0.2s ease-in-out);
-							left: 0;
-							bottom: -12px;
-						}
-					}
-				}
-
-				&.open {
-
-					.btn-hrz-mid {
-						border: 3px solid rgba(0, 0, 0, 0);
-
-						&::before {
-							content: '';
-							display: block;
-							border-top: 3px solid white;
-							width: 100%;
-							position: absolute;
-							top: 0;
-							@include transition(all 0.2s ease-in-out);
-							@include transform(rotate(45deg));
-						}
-
-						&:after {
-							content: '';
-							display: block;
-							border-top: 3px solid white;
-							border-bottom: none;
-							width: 100%;
-							position: absolute;
-							top: 0;
-							@include transition(all 0.2s ease-in-out);
-							@include transform(rotate(-45deg));
-						}
+						bottom: -12px;
 					}
 				}
 			}
 
-			.logo {
-				display: inline-block;
-				vertical-align: middle;
-				padding: 12px 0;
-				margin: auto;
+			&.open {
 
-				h1 {
-					margin: 0;
-					padding: 0;
-					display: inline-block;
-					color: white;
-					font-weight: 400;
-					text-decoration: overline;
-					text-shadow: 0 0 5px rgba(black, 0.5);
-				}
-			}
+				.btn-hrz-mid {
+					border: 3px solid rgba(0, 0, 0, 0);
 
-			.log-reg {
-				padding: 0;
-				margin: 0;
-				display: inline-block;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				@include transform(translateY(-50%));
-
-				li {
-					display: inline-block;
-
-					a {
+					&::before {
+						content: '';
 						display: block;
-						padding: 10px;
-						color: white;
+						border-top: 3px solid white;
+						width: 100%;
+						position: absolute;
+						top: 0;
+						@include transition(all 0.2s ease-in-out);
+						@include transform(rotate(45deg));
+					}
+
+					&:after {
+						content: '';
+						display: block;
+						border-top: 3px solid white;
+						border-bottom: none;
+						width: 100%;
+						position: absolute;
+						top: 0;
+						@include transition(all 0.2s ease-in-out);
+						@include transform(rotate(-45deg));
 					}
 				}
 			}
 		}
+
+		.logo {
+			display: inline-block;
+			vertical-align: middle;
+			padding: 12px 0;
+			margin: auto;
+
+			h1 {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				color: white;
+				font-weight: 400;
+				text-decoration: overline;
+				text-shadow: 0 0 5px rgba(black, 0.5);
+			}
+		}
+
+		.log-reg {
+			padding: 0;
+			margin: 0;
+			display: inline-block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			@include transform(translateY(-50%));
+
+			li {
+				display: inline-block;
+
+				a {
+					display: block;
+					padding: 10px;
+					color: white;
+				}
+			}
+		}
 	}
-
-
 }

@@ -12,13 +12,19 @@ router.get('/', function(req, res) {
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
 	if (authData) {
-
-		res.render('user/profile', viewObj)
+		//get user data
+		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
+			id = snapshot.key();
+			viewObj.user = snapshot.val();
+			viewObj.auth = authData;
+			res.render('user/profile', viewObj);
+		}, function(err) {
+			if(err) throw err;
+		});
 	} else {
 		console.log("User not authenticated");
 		return res.redirect('/access/login');
 	}
-	;
 });
 
 
