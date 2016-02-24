@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 	if (req.query.reset){
 		viewObj.reset = "Password reset successful! Login with the temporary password sent to your email.";
 	}
-	
+
 	console.log(viewObj.new)
 	res.render('access/login', viewObj);
 });
@@ -52,14 +52,12 @@ router.post('/', function(req, res){
 			viewObj.email = email;
 			res.render('access/login', viewObj)
 		} else {
-			console.log(query);
 			//check if user is just registering
 			//if true redirect to change password
 			if(query && query.isNew && query.isNew === 'true') {
 				return res.redirect('/access/changepasswd');
 			}
 
-			console.log("Authenticated successfully with payload:", authData);
 			res.redirect("/user/profile")
 	 	}
 	}
