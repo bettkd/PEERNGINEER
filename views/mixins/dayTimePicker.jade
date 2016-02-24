@@ -1,0 +1,26 @@
+mixin dayTimePicker
+	- var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+	#dayTimePicker
+		.row
+			each day in days
+				.dayTimePicker.col-xs-12.col-sm-2
+					label
+						input.day(type="checkbox", name="#{day}", value="#{day}")
+						| #{day}
+
+					select.time(name="#{day}-times", multiple)
+						option(value="8:00am") 8:00am
+						option(value="9:00am") 9:00am
+						option(value="10:00am") 10:00am
+						option(value="11:00am") 11:00am
+						option(value="12:00pm") 12:00pm
+						option(value="1:00pm") 1:00pm
+						option(value="2:00pm") 2:00pm
+						option(value="3:00pm") 3:00pm
+						option(value="4:00pm") 4:00pm
+						option(value="5:00pm") 5:00pm
+						option(value="6:00pm") 6:00pm
+						option(value="7:00pm") 7:00pm
+						option(value="8:00pm") 8:00pm
+		
+	
