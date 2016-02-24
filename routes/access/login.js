@@ -21,14 +21,17 @@ router.get('/', function(req, res) {
 	viewObj.email = null;
 	viewObj.newuser = null;
 	viewObj.reset = null;
+
 	if (req.query.isNew){
 		query = req.query;
 		viewObj.newUser = true;
 		viewObj.newuser = "Account successfully created! Login with the temporary password sent to your email.";
 	}
+
 	if (req.query.reset){
 		viewObj.reset = "Password reset successful! Login with the temporary password sent to your email.";
 	}
+	
 	console.log(viewObj.new)
 	res.render('access/login', viewObj);
 });
