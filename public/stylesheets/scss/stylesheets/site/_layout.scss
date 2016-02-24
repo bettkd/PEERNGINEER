@@ -1,62 +1,82 @@
 &.nonav {
 
-	#nonav-back-btn {
-		position: absolute;
-		top: 10px;
-		left: 70px;
-		padding: 39px 30px;
-		width: 80px;
-		border-radius: 50%;
-		border: none;
-		background-color: $blue;
-		box-shadow: $def-box;
-		@include transition(background-color 0.3s linear);
+	#home-back-cont {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		
+		#nonav-back-btn {
+			position: absolute;
+			top: 10px;
+			left: 70px;
+			padding: 39px 30px;
+			width: 80px;
+			border-radius: 50%;
+			border: none;
+			background-color: $blue;
+			box-shadow: $def-box;
+			@include transition(background-color 0.3s linear);
 
-		.nonav-back-btn {
-			display: block;
-			width: 100%;
-			border-top: 2px solid white;
-			position: relative;
-
-			&::before {
-				content: '';
+			.nonav-back-btn {
 				display: block;
-				width: 60%;
+				width: 100%;
 				border-top: 2px solid white;
-				position: absolute;
-				left: -2px;
-				bottom: -4px;
-				@include transform(rotate(45deg));
+				position: relative;
+
+				&::before {
+					content: '';
+					display: block;
+					width: 60%;
+					border-top: 2px solid white;
+					position: absolute;
+					left: -2px;
+					bottom: -4px;
+					@include transform(rotate(45deg));
+				}
+
+				&::after {
+					content: '';
+					display: block;
+					width: 60%;
+					border-top: 2px solid white;
+					position: absolute;
+					left: -2px;
+					bottom: 4px;
+					@include transform(rotate(-45deg));
+				}
 			}
 
-			&::after {
-				content: '';
-				display: block;
-				width: 60%;
-				border-top: 2px solid white;
-				position: absolute;
-				left: -2px;
-				bottom: 4px;
-				@include transform(rotate(-45deg));
+			&:hover {
+				background-color: $green;
 			}
 		}
 
-		&:hover {
+		#nonav-home-btn {
+			position: absolute;
+			top: 20px;
+			left: 10px;
+			padding: 17px 20px;
+			border-radius: 50%;
+			border: none;
 			background-color: $green;
+			box-shadow: $def-box;
+			color: white;
+			@include transition(background-color 0.3s linear);
 		}
-	}
 
-	#nonav-home-btn {
-		position: absolute;
-		top: 20px;
-		left: 10px;
-		padding: 17px 20px;
-		border-radius: 50%;
-		border: none;
-		background-color: $green;
-		box-shadow: $def-box;
-		color: white;
-		@include transition(background-color 0.3s linear);
+		#nonav-logout-btn {
+			position: absolute;
+			top: 20px;
+			left: 155px;
+			padding: 17px 20px;
+			border-radius: 50%;
+			border: none;
+			background-color: $red;
+			box-shadow: $def-box;
+			color: white;
+			@include transition(background-color 0.3s linear);
+		}
 	}
 }
 
