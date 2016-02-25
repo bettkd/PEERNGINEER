@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
 		//get user data
 		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
 			id = snapshot.key();
-			viewObj.user = snapshot.val();
+			viewObj.user = snapshot.val();console.log(snapshot.val());
 		}, function (errorObject) {
 			console.log("The read failed: " + errorObject.code);
 		});
