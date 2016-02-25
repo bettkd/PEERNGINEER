@@ -24,7 +24,6 @@ router.get('/', function(req, res) {
 
 		//get user data
 		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
-			console.log(snapshot.val());
 			id = snapshot.key();
 			viewObj.user = snapshot.val();
 		}, function (errorObject) {
@@ -59,11 +58,11 @@ router.post('/', function(req, res) {
 		major: req.body.major,
 		classification: req.body.classification,
 		availability: {
-			"monday": req.body["Monday-times"] || [],
-			"tuesday": req.body["Tuesday-times"] || [],
-			"wednesday": req.body["Wednesday-times"] || [],
-			"thursday": req.body["Thursday-times"] || [],
-			"friday": req.body["Friday-times"] || []
+			"monday": req.body["monday-times"] || [],
+			"tuesday": req.body["tuesday-times"] || [],
+			"wednesday": req.body["wednesday-times"] || [],
+			"thursday": req.body["thursday-times"] || [],
+			"friday": req.body["friday-times"] || []
 		}
 	}
 
