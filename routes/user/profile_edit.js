@@ -23,9 +23,9 @@ router.get('/', function(req, res) {
 		viewObj.auth = authData;
 
 		//get user data
-		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
+		userRef.orderByChild("uid").equalTo(authData.uid).on("child_added", function(snapshot) {
 			id = snapshot.key();
-			viewObj.user = snapshot.val();
+			viewObj.user = snapshot.val() || {};
 		}, function (errorObject) {
 			console.log("The read failed: " + errorObject.code);
 		});
@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 
 	//get user data from req
 	var userData = {
-		_id: req.body._id,
+		uid: req.body._id,
 		isAdmin: false,
 		isMentor: false,
 		isMentee: true,
@@ -69,7 +69,7 @@ router.post('/', function(req, res) {
 	//set userRef
 	var userRef = ref.child('users');
 
-	if(query.isNew === 'true') {
+	if(query && query.isNew === 'true') {
 		userRef.push().set(userData, function(err) {
 			if(err) throw err;
 
