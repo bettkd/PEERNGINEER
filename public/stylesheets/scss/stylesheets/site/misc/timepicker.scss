@@ -1,0 +1,17 @@
+#dayTimePicker {
+	width: 100%;
+	padding: 10px 5px;
+
+	.dayTimePicker {
+
+		label {
+			display: block;
+			padding: 10px;
+			text-align: center;
+		}
+
+		select {
+			width: 100%;
+		}
+	}
+}

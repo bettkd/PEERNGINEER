@@ -15,10 +15,13 @@ html
 	body.nonav
 		
 		#home-back-cont
-			a#nonav-home-btn(href="/")
+			a#nonav-home-btn(href="/", title="Home")
 				span.glyphicon.glyphicon-home
-			a#nonav-back-btn(href="#{referer}")
+			a#nonav-back-btn(href="#{referer}", title="Back")
 				span.nonav-back-btn
+			if isUser
+				a#nonav-logout-btn(href="/access/logout", title="Logout")
+					span.glyphicon.glyphicon-log-out
 			
 		block content
 		

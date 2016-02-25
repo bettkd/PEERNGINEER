@@ -1,36 +1,17 @@
-extends ../layouts/layout
+extends ../layouts/nonav
 
 block content
-	h1= title
-	p User: @#{username}
-	p <img src="#{profileImageURL}" alt = "profImg" align="left">
-	p #{firstname} #{lastname}
-	p Bio: #{bio}
-
-	h2 Contact Info
-	p Email: <a href="mailto:#{phone}" target="_blank"> #{email} </a>
-	p Phone: <a href="tel:#{phone}" target="_blank"> #{phone} </a>
-	p LinkedIn: <a href="https://www.linkedin.com/in/#{linkedinID}" target="_blank"> #{linkedinID} </a>
-	p Facebook: <a href="https://www.facebook.com/" target="_blank"> #{facebookID} </a>
-	p GitHub: <a href="https://www.github.com/" target="_blank"> #{githubID} </a>
-
-	h2 Education
-	p Major: #{major}
-	p Classification: #{classification}
-
-	h2 Mentoring
-	if interestedtopics
-		p Interested Topics:
-			ul 
-				each val in interestedtopics
-					li= val
-	if mentortopics
-		p Mentor Topics:
-			ul 
-				each val in mentortopics
-					li= val
-	if availability
-		p Availability Schedule:
-			ul 
-				each val in availability
-					li= val
+	#profile
+		.profile
+			.row
+				.gravatar.col-xs-12.col-sm-5.col-md-3
+					img(src="#{auth.password.profileImageURL}")
+					h3.uname @#{user.username}
+				.user-info.col-xs-12.col-sm-7.col-md-9
+					h1.user-name= user.fullname
+					p.user-bio= user.bio
+					.buttons
+						a.button.edit(href="/user/profile_edit") Edit
+						a.button.avatar(href="#") Change Gravatar
+						a.button.password(href="/access/changepasswd") Change password
+						

@@ -1,0 +1,26 @@
+.button {
+	border: none;
+	display: block;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: $blue;
+	box-shadow: $def-box;
+	color: white;
+	font-weight: 200;
+	text-transform: uppercase;
+	margin: 5px auto;
+	text-align: center;
+
+	&:hover,
+	&:visited,
+	&:focus {
+		text-decoration: none;
+		color: white;
+	}
+
+	@media all and (min-width: 992px) {
+		width: 30%;
+		display: inline-block;
+		margin: 10px 10px 0 0;
+	}
+}
