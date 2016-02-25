@@ -4,14 +4,46 @@
 
 	.dayTimePicker {
 
-		label {
-			display: block;
-			padding: 10px;
-			text-align: center;
+		.day {
+			text-transform: uppercase;
 		}
 
-		select {
+		.time-container {
 			width: 100%;
+			border-radius: 5px;
+			background-color: $lightgray;
+			@include transition(height 0.5s);
+
+			.instruction {
+				text-align: center;
+				margin: 5px auto;
+				color: darken($lightgray, 20%);
+			}
+
+			.time {
+				width: 100%;
+				text-align: center;
+				padding: 10px;
+				font-size: 1.2em;
+				font-weight: 400;
+				cursor: pointer;
+				@include transition(all 0.2s);
+
+				.select-time {
+					display: block;
+
+				}
+
+				&.selected {
+					background-color: $blue;
+					color: white;
+				}
+
+				&:hover {
+					background-color: lighten($green, 10%);
+					color: white;
+				}
+			}
 		}
 	}
 }
