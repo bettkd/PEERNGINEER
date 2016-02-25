@@ -14,9 +14,9 @@ mixin dayTimePicker
 							if n > 12
 								- time = n - 12
 							- var am_pm = (n < 12) ? "am" : "pm"
-							div.time(class= (user.availability && user.availability[day] && user.availability[day].indexOf(time + ':00' + am_pm) > -1) ? 'selected' : null)
+							div.time(class= (user && user.availability && user.availability[day] && user.availability[day].indexOf(time + ':00' + am_pm) > -1) ? 'selected' : null)
 								span.select-time(data-time="#{time}:00#{am_pm}", data-name="#{day}-times") #{time}:00#{am_pm}
-								input(type="hidden", value="#{time}:00#{am_pm}" name= (user.availability && user.availability[day] && user.availability[day].indexOf(time + ':00' + am_pm) > -1) ? day + '-times' : null)
+								input(type="hidden", value="#{time}:00#{am_pm}" name= (user && user.availability && user.availability[day] && user.availability[day].indexOf(time + ':00' + am_pm) > -1) ? day + '-times' : null)
 							- n++
 		
 	

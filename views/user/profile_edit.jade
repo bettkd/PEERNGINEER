@@ -21,44 +21,44 @@ block content
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					.field.fifty
 						label(for="firstname") First Name
-						input#firstname.focus(type="text", name="firstname", value= (!!user.first) ? user.first : "")
+						input#firstname.focus(type="text", name="firstname", value= (user && !!user.first) ? user.first : "")
 					.field.fifty
 						label(for="lastname") Last Name
-						input#lastname(type="text", name="lastname", value= (!!user.last) ? user.last : "")
+						input#lastname(type="text", name="lastname", value= (user && !!user.last) ? user.last : "")
 					.field
 						label(for="bio") Bio
-						textarea#bio(rows="5", name="bio") #{user.bio || ""}
+						textarea#bio(rows="5", name="bio") #{(user && user.bio) ? user.bio : ""}
 		
 		.edit-profile
 			.row
 				h2.heading Contact Info
 				.field.fifty
 					label(for="phone") Phone:
-					input#phone(type="text", name="phone", value= (!!user.phone) ? user.phone : "")
+					input#phone(type="text", name="phone", value= (user && !!user.phone) ? user.phone : "")
 				.field.fifty
 					label(for="linkedinID") LinkedIn ID:
-					input#linkedinID(type="text", name="linkedinID", value= (!!user.linkedinID) ? user.linkedinID : "")
+					input#linkedinID(type="text", name="linkedinID", value= (user && !!user.linkedinID) ? user.linkedinID : "")
 				.field.fifty
 					label(for="facebookID") Facebook ID:
-					input#facebookID(type="text", name="facebookID", value= (!!user.facebookID) ? user.facebookID : "")
+					input#facebookID(type="text", name="facebookID", value= (user && !!user.facebookID) ? user.facebookID : "")
 				.field.fifty
 					label(for="githubID") GitHub ID:
-					input#githubID(type="text", name="githubID", value= (!!user.githubID) ? user.githubID : "")
+					input#githubID(type="text", name="githubID", value= (user && !!user.githubID) ? user.githubID : "")
 					
 		.edit-profile
 			.row
 				h2.heading Education
 				.field.fifty
 					label(for="major") Major:
-					input#major(type="text", name="major", value= (!!user.major) ? user.major : "")
+					input#major(type="text", name="major", value= (user && !!user.major) ? user.major : "")
 				.field.fifty
 					label(for="classification") Classification:
 					select#classification(name="classification")
-						option(value="freshman" selected= (user.classification === "freshman") ? true : null) Freshman
-						option(value="sophomore" selected= (user.classification === "sophomore") ? true : null) Sophomore
-						option(value="junior" selected= (user.classification === "junior") ? true : null) Junior
-						option(value="senior" selected= (user.classification === "senior") ? true : null) Senior
-						option(value="graduate" selected= (user.classification === "graduate") ? true : null) Graduate
+						option(value="freshman" selected= (user && user.classification === "freshman") ? true : null) Freshman
+						option(value="sophomore" selected= user && (user.classification === "sophomore") ? true : null) Sophomore
+						option(value="junior" selected= (user && user.classification === "junior") ? true : null) Junior
+						option(value="senior" selected= (user && user.classification === "senior") ? true : null) Senior
+						option(value="graduate" selected= (user && user.classification === "graduate") ? true : null) Graduate
 		
 		.edit-profile
 			h2.heading Availability
