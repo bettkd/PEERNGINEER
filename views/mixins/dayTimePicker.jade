@@ -18,18 +18,5 @@ mixin dayTimePicker
 								span.select-time(data-time="#{time}:00#{am_pm}", data-name="#{day}-times") #{time}:00#{am_pm}
 								input(type="hidden", value="#{time}:00#{am_pm}" name= (user.availability && user.availability[day].indexOf(time + ':00' + am_pm) > -1) ? day + '-time' : null)
 							- n++
-						//- option(value="8:00am" selected= (user.availability[day].indexOf('8:00am') > -1) ? true : null) 8:00am
-						//- option(value="9:00am" selected= (user.availability[day].indexOf('9:00am') > -1) ? true : null) 9:00am
-						//- option(value="10:00am" selected= (user.availability[day].indexOf('10:00am') > -1) ? true : null) 10:00am
-						//- option(value="11:00am" selected= (user.availability[day].indexOf('11:00am') > -1) ? true : null) 11:00am
-						//- option(value="12:00pm" selected= (user.availability[day].indexOf('12:00pm') > -1) ? true : null) 12:00pm
-						//- option(value="1:00pm" selected= (user.availability[day].indexOf('1:00pm') > -1) ? true : null) 1:00pm
-						//- option(value="2:00pm" selected= (user.availability[day].indexOf('2:00pm') > -1) ? true : null) 2:00pm
-						//- option(value="3:00pm" selected= (user.availability[day].indexOf('3:00pm') > -1) ? true : null) 3:00pm
-						//- option(value="4:00pm" selected= (user.availability[day].indexOf('4:00pm') > -1) ? true : null) 4:00pm
-						//- option(value="5:00pm" selected= (user.availability[day].indexOf('5:00pm') > -1) ? true : null) 5:00pm
-						//- option(value="6:00pm" selected= (user.availability[day].indexOf('6:00pm') > -1) ? true : null) 6:00pm
-						//- option(value="7:00pm" selected= (user.availability[day].indexOf('7:00pm') > -1) ? true : null) 7:00pm
-						//- option(value="8:00pm" selected= (user.availability[day].indexOf('8:00pm') > -1) ? true : null) 8:00pm
 		
 	
