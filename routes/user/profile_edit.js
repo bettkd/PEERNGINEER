@@ -39,6 +39,8 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 
+	console.log(req.body);
+
 	//get user data from req
 	var userData = {
 		_id: req.body._id,
