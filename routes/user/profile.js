@@ -13,9 +13,9 @@ router.get('/', function(req, res) {
 	var authData = ref.getAuth();
 	if (authData) {
 		//get user data
-		userRef.orderByChild("_id").equalTo(authData.uid).on("child_added", function(snapshot) {
+		userRef.orderByChild("uid").equalTo(authData.uid).on("child_added", function(snapshot) {
 			id = snapshot.key();
-			viewObj.user = snapshot.val();
+			viewObj.user = snapshot.val() || {};
 			viewObj.auth = authData;
 			res.render('user/profile', viewObj);
 		}, function(err) {
