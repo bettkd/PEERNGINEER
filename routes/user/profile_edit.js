@@ -7,34 +7,42 @@ var express = require('express'),
 var viewObj = {
 	title: 'Edit Profile | PEERNGINEER'
 };
-var query, id;
+var newUser, id, username;
 
 router.get('/', function(req, res) {
-	if(req.query) {
-		query = req.query;
-		viewObj.isNew = req.query.isNew;
-	}
-
+	
+	console.log("here!!!!!");
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
 
 	if (authData) {
+
+		username = authData.password.email.split('@')[0]
+
+		console.log("authData "+ authData)
 		//set auth for view access
 		viewObj.auth = authData;
 
 		//get user data
-		userRef.orderByChild("uid").equalTo(authData.uid).on("child_added", function(snapshot) {
-			id = snapshot.key();
-			viewObj.user = snapshot.val() || {};
-		}, function (errorObject) {
-			console.log("The read failed: " + errorObject.code);
+		userRef.child(username).once('value', function(snapshot) {
+		    var exists = (snapshot.val() !== null);
+		    console.log("EXISTANCE: " + exists);
+		    if (exists) {
+		    	viewObj.user = snapshot.val();
+		    	newUser = "false";
+		    	viewObj.isNew = "false";
+		    } else {
+		    	newUser = "true";
+		    	viewObj.isNew = "true";
+		    }
 		});
+
+		console.log("new ???? " + newUser);
+		return res.render('user/profile_edit', viewObj)
 
 	} else {
 		return res.redirect('/access/login');
 	}
-
-	res.render('user/profile_edit', viewObj)
 });
 
 router.post('/', function(req, res) {
@@ -69,13 +77,12 @@ router.post('/', function(req, res) {
 	//set userRef
 	var userRef = ref.child('users');
 
-	if(query && query.isNew === 'true') {
-		userRef.push().set(userData, function(err) {
-			if(err) throw err;
-
-			res.redirect('/user/profile');
-		});
+	if(newUser) {
+		console.log("New User added!")
+		userRef.child(username).set(userData);
+		res.redirect('/user/profile');
 	} else {
+		console.log("Old User updated!")
 		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + id );
 		userRef.update(userData, function(err) {
 			if(err) throw err;
