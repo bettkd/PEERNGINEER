@@ -5,13 +5,13 @@ block content
 		.profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{auth.password.profileImageURL}")
+					img(src="#{(user && !!user.gravatar) ? user.gravatar: auth.password.profileImageURL}")
 					h3.uname @#{user.username}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					h1.user-name= user.fullname
 					p.user-bio= user.bio
 					.buttons
 						a.button.edit(href="/user/profile_edit") Edit
-						a.button.avatar(href="#") Change Gravatar
+						a.button.avatar(href="/user/changeavatar") Change Gravatar
 						a.button.password(href="/access/changepasswd") Change password
 						
