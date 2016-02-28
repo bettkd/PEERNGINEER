@@ -7,17 +7,16 @@ var express = require('express'),
 var viewObj = {
 	title: 'Edit Profile | PEERNGINEER'
 };
-var newUser, id, username;
+var newUser, username, gravatar;
 
 router.get('/', function(req, res) {
-	
-	console.log("here!!!!!");
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
 
 	if (authData) {
 
-		username = authData.password.email.split('@')[0]
+		username = authData.password.email.split('@')[0];
+		gravatar = authData.password.profileImageURL;
 
 		console.log("authData "+ authData)
 		//set auth for view access
@@ -35,13 +34,12 @@ router.get('/', function(req, res) {
 		    	newUser = "true";
 		    	viewObj.isNew = "true";
 		    }
+			console.log("new ???? " + viewObj.user);
+			res.render('user/profile_edit', viewObj)
 		});
 
-		console.log("new ???? " + newUser);
-		return res.render('user/profile_edit', viewObj)
-
 	} else {
-		return res.redirect('/access/login');
+		res.redirect('/access/login');
 	}
 });
 
@@ -79,11 +77,12 @@ router.post('/', function(req, res) {
 
 	if(newUser) {
 		console.log("New User added!")
+		userData.gravatar = gravatar;
 		userRef.child(username).set(userData);
 		res.redirect('/user/profile');
 	} else {
 		console.log("Old User updated!")
-		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + id );
+		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + username );
 		userRef.update(userData, function(err) {
 			if(err) throw err;
 

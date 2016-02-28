@@ -16,7 +16,7 @@ block content
 		.edit-profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{auth.password.profileImageURL}")
+					img(src="#{(user && !!user.gravatar) ? user.gravatar: auth.password.profileImageURL}")
 					h3.uname @#{uname}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					.field.fifty
