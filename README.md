@@ -22,8 +22,6 @@ Collaborators:
 
 ![alt tag](https://raw.githubusercontent.com/bettkd/PEERNGINEER/master/public/images/screenshots/Screen.Shot.2016-02-28.at.8.44.43.PM.png)
 
-![alt tag](https://raw.githubusercontent.com/bettkd/PEERNGINEER/master/public/images/screenshots/Screen.Shot.2016-02-28.at.8.45.02.PM.png)
-
 ![alt tag](https://raw.githubusercontent.com/bettkd/PEERNGINEER/master/public/images/screenshots/Screen.Shot.2016-02-28.at.8.45.14.PM.png)
 
 ![alt tag](https://raw.githubusercontent.com/bettkd/PEERNGINEER/master/public/images/screenshots/Screen.Shot.2016-02-28.at.8.45.20.PM.png)
