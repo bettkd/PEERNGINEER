@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#login
-		.login
+	#login.access
+		.login.container-access
 			h1.heading Login
 			form(id="frmlogin" action="/access/login" method="post")
 				if newuser
@@ -21,6 +21,6 @@ block content
 					label(for="password") Password
 					input#password(type="password", name="password")
 				.field
-					button.btn(id="btnLogin") Login
+					button.button(id="btnLogin") Login
 			p Forgot your password? <a href="/access/resetpasswd">Reset Password</a>
 			p Don't have an account? <a href="/access/register">Register</a>

@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#changepasswd
-		.changepasswd
+	#changepasswd.access
+		.changepasswd.container-access
 			h1.heading Change Password
 			h3 @#{username}
 			form(id="frmRegister" action="/access/changepasswd" method="post")

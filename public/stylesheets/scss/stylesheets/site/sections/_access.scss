@@ -1,0 +1,22 @@
+.access {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+
+	.container-access {
+		margin: 30px auto;
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+		padding: 40px 30px;
+		border-radius: 5px;
+		background-color: white;
+		box-shadow: $def-box;
+	}
+
+	@media all and (min-height: 700px) {
+		@include display(flex);
+		@include align-items(center);
+		@include justify-content(center);
+	}
+}

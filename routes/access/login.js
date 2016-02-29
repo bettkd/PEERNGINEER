@@ -32,7 +32,6 @@ router.get('/', function(req, res) {
 		viewObj.reset = "Password reset successful! Login with the temporary password that will be sent to your email shortly.";
 	}
 
-	console.log(viewObj.new)
 	res.render('access/login', viewObj);
 });
 

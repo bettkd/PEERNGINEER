@@ -9,7 +9,7 @@ block content
 		input(type="hidden", name="email", value="#{auth.password.email}")
 		input(type="hidden", name="_id", value="#{auth.uid}")
 		
-		if isNew
+		if isNew == "true"
 			.edit-profile.complete-profile
 				h3 Complete your profile.
 				

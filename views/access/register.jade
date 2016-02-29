@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#register
-		.register
+	#register.access
+		.register.container-access
 			h1.heading Register
 			form(id="frmRegister" action="/access/register" method="post")
 				if err

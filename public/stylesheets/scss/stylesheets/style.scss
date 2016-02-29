@@ -18,6 +18,7 @@ html {
 	@import 'site/misc/timepicker';
 
 	// sections
+	@import 'site/sections/access';
 	@import 'site/sections/login';
 	@import 'site/sections/profile';
 	@import 'site/sections/register';
@@ -31,5 +32,5 @@ html {
 	padding: 0;
 	font-size: 14px;
 	font-family: 'Open Sans', sans-serif;
-	background-color: $lightgray;
+	background-color: $blue-primary;
 }
