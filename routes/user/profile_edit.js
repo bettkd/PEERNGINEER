@@ -45,9 +45,11 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 
+	var authData = ref.getAuth();
+
 	//get user data from req
 	var userData = {
-		uid: req.body._id,
+		uid: authData.uid,
 		isAdmin: false,
 		isMentor: false,
 		isMentee: true,
@@ -55,7 +57,7 @@ router.post('/', function(req, res) {
 		first : req.body.firstname,
 		last : req.body.lastname,
 		fullname : [req.body.firstname, req.body.lastname].join(' '),
-		email: req.body.email,
+		email: authData.password.email,
 		bio : req.body.bio,
 		phone : req.body.phone,
 		githubID : req.body.githubID,
