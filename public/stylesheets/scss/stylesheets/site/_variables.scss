@@ -1,16 +1,12 @@
 // Colors
-$pink: #F24472;
 $yellow: #FFFF00;
 $red: #F23838;
-$lightgray: #fafafa;
-
 $blue-dark: #1976D2;
 $blue-primary: #2196F3;
-$primary-color-light: #BBDEFB;
 $green: #8BC34A;
-$primary-text-color: #212121;
-$secondary-text-color: #727272;
-$divider-color: #B6B6B6;
+$dark-text: #000;
+$primary-text-color: lighten($dark-text, 13%);
+$lightgray: #fbfbfb;
 
 // Shadows
 $def-box: 0px 2px 5px 0px rgba(0,0,0,0.16),

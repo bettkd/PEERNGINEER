@@ -35,12 +35,13 @@
 				}
 
 				&.selected {
-					background-color: $blue-dark;
+					background-color: lighten($blue-primary, 10%);
 					color: white;
 				}
 
 				&:hover {
-					background-color: lighten($green, 10%);
+					background-color: lighten($blue-primary, 10%);
+					font-weight: bold;
 					color: white;
 				}
 			}

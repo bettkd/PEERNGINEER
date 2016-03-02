@@ -14,7 +14,7 @@
 			width: 80px;
 			border-radius: 50%;
 			border: none;
-			background-color: $pink;
+			background-color: $green;
 			box-shadow: $def-box;
 
 			.nonav-back-btn {
@@ -67,7 +67,7 @@
 			padding: 17px 20px;
 			border-radius: 50%;
 			border: none;
-			background-color: $divider-color;
+			background-color: $green;
 			box-shadow: $def-box;
 			color: white;
 			@include transition(background-color 0.3s linear);
