@@ -6,10 +6,8 @@ block content
 	
 	form#edit-profile(action="/user/profile_edit", method="post", novalidate)
 		input(type="hidden", name="username", value="#{uname}")
-		input(type="hidden", name="email", value="#{auth.password.email}")
-		input(type="hidden", name="_id", value="#{auth.uid}")
 		
-		if isNew
+		if isNew == "true"
 			.edit-profile.complete-profile
 				h3 Complete your profile.
 				

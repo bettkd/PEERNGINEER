@@ -65,7 +65,7 @@ form {
 			@include transition(all 0.5s);
 
 			&:focus {
-				border-bottom: 2px solid $blue;
+				border-bottom: 2px solid $blue-primary;
 			}
 		}
 
@@ -74,7 +74,6 @@ form {
 			padding: 15px;
 			color: white;
 			text-transform: uppercase;
-			background-color: $blue;
 			border-radius: 3px;
 			outline: none;
 			border: none;

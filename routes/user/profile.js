@@ -17,15 +17,15 @@ router.get('/', function(req, res) {
 
 		//get user data
 		userRef.child(username).once('value', function(snapshot) {
-		    var exists = (snapshot.val() !== null);
-		    viewObj.auth = authData;
-		    if (exists) {
-		    	viewObj.user = snapshot.val();
-		    	return res.render('user/profile', viewObj);
-		    } else {
-		    	return res.redirect('profile_edit');
-		    }
-		});
+			var exists = (snapshot.val() !== null);
+			viewObj.auth = authData;
+			if (exists) {
+				viewObj.user = snapshot.val();
+				return res.render('user/profile', viewObj);
+			} else {
+				return res.redirect('/user/profile_edit');
+			}
+			});
 	} else {
 		console.log("User not authenticated");
 		return res.redirect('/access/login');
@@ -34,5 +34,8 @@ router.get('/', function(req, res) {
 
 
 // TODO: Allow a way for users to change their password through the route /access/changepasswd if it can be done on a modal form, nice!
+router.post('/changepasswd', function(req, res) {
+
+});
 
 module.exports = router;
