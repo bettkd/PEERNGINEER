@@ -1,5 +1,5 @@
 * {
-	box-sizing: border-box;
+	box-sizing: border-box !important;
 }
 
 body,
@@ -9,9 +9,7 @@ html {
 	@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic);
 
 	@import '../../bourbon/bourbon';
-	@import '../../materialize/components/color';
-	@import '../../materialize/components/variables';
-	@import '../../materialize/components/waves';
+	@import '../../materialize/materialize';
 	@import 'site/variables';
 	@import 'site/layout';
 
