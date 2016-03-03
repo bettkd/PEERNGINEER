@@ -85,6 +85,41 @@ form#edit-profile,
 				li {
 					padding: 5px 0;
 					font-size: 1.2em;
+
+					span {
+						display: inline-block;
+						vertical-align: middle;
+					}
+
+					a {
+						display: inline-block;
+						vertical-align: middle;
+						color: inherit;
+						border: none;
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+					i {
+						font-size: 1.5em;
+						margin-right: 10px;
+						display: inline-block;
+						vertical-align: middle;
+
+						&[class*="facebook"] {
+							color: $facebook_color;
+						}
+
+						&[class*="linkedin"] {
+							color: $linkedin_color;
+						}
+
+						&[class*="phone"] {
+							color: $primary-color;
+						}
+					}
 				}
 			}
 		}
