@@ -120,6 +120,23 @@ form#edit-profile,
 							color: $primary-color;
 						}
 					}
+
+				}
+
+				.education {
+
+					div {
+
+						p {
+							text-transform: uppercase;
+							padding: 0;
+						}
+
+						h5 {
+							text-transform: capitalize;
+						}
+					}
+
 				}
 			}
 		}
