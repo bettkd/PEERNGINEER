@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
+var utils = require('./lib/util');
 
 //get firebase
 var Firebase = require('firebase'),
@@ -19,9 +20,9 @@ var routes = require('./routes'),
 	register = require('./routes/access/register'),
 	resetpasswd = require('./routes/access/resetpasswd'),
 	changepasswd = require('./routes/access/changepasswd'),
-	users = require('./routes/user/users'),
+	admin = require('./routes/user/admin'),
 	profile = require('./routes/user/profile'),
-	profile_edit = require('./routes/user/profile_edit');
+	profile_edit = require('./routes/user/profile_edit'),
 	changeavatar = require('./routes/user/changeavatar');
 
 var app = express();
@@ -66,7 +67,7 @@ app.use('/access/logout', logout);
 app.use('/access/register', register);
 app.use('/access/resetpasswd', resetpasswd);
 app.use('/access/changepasswd', changepasswd);
-app.use('/user/users', users);
+app.use('/user/admin', admin);
 app.use('/user/profile', profile);
 app.use('/user/profile_edit', profile_edit);
 app.use('/user/changeavatar', changeavatar);
@@ -103,10 +104,10 @@ app.use(function(err, req, res, next) {
 });
 
 // Configure API for saving images
-cloudinary.config({ 
-	cloud_name: 'peerngineer', 
-	api_key: '897862564791181', 
-	api_secret: 'AJcDSocxqA4wrXSxqxD06iHtnDY' 
+cloudinary.config({
+	cloud_name: 'peerngineer',
+	api_key: '897862564791181',
+	api_secret: 'AJcDSocxqA4wrXSxqxD06iHtnDY'
 });
 
 

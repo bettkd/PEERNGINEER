@@ -14,6 +14,10 @@ block content
 						a.btn-large.button.inline(href="/user/profile_edit") 
 							i.material-icons mode_edit
 							| Edit
+						if user.isAdmin
+							a.btn-large.button.inline(href="/user/admin") 
+								i.fa.fa-lock
+								| Dashboard
 						a.btn-large.button.inline(href="/user/changeavatar") Change Gravatar
 						a.btn-large.button.inline(href="/access/changepasswd") Change password
 		
@@ -56,3 +60,16 @@ block content
 							.classification.col.s12.m4
 								p Classification
 								h5= user.classification
+
+block js
+	script.
+		$(window).on('load', function() {
+			//use session storage to figure out if already welcomed
+			if(sessionStorage.welcomed) {
+				return;
+			} else {
+				var $uname = $('.uname').text();
+				Materialize.toast('Welcome ' + $uname, 5000);
+				sessionStorage.welcomed = true;
+			}
+		});
