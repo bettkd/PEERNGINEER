@@ -12,6 +12,12 @@
 	cursor: pointer;
 	@include transition(all 0.3s);
 
+	i {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 5px 0 -10px;
+	}
+
 	&.inline {
 
 		@media all and (min-width: 768px) {
