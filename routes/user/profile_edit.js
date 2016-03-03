@@ -59,10 +59,12 @@ router.post('/', function(req, res) {
 		fullname : [req.body.firstname, req.body.lastname].join(' '),
 		email: authData.password.email,
 		bio : req.body.bio,
-		phone : req.body.phone,
-		githubID : req.body.githubID,
-		linkedinID : req.body.linkedinID,
-		facebookID : req.body.facebookID,
+		contact : {
+			phone : req.body.phone,
+			githubID : req.body.githubID,
+			linkedinID : req.body.linkedinID,
+			facebookID : req.body.facebookID,
+		},
 		major: req.body.major,
 		classification: req.body.classification,
 		availability: {

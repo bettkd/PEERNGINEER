@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#changeavatar
-		.changeavatar
+	#changeavatar.access
+		.changeavatar.container-access
 			h1.heading Change Avatar
 			form(id="frmChangeAvatar" action="/user/changeavatar" method="post" enctype="multipart/form-data")
 				.warnings
@@ -12,6 +12,6 @@ block content
 						p=err
 				.field
 					label(for="photo_image") Choose Image: <br>
-					input#photo_image.focus(type="file", name="image", accept="image/*")
+					input#photo_image(type="file", name="image", accept="image/*")
 				.field
-					button.btn(id="btnUpload", type="submit") Upload
+					button.btn-large.button(id="btnUpload", type="submit") Upload

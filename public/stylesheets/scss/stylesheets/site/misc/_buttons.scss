@@ -1,17 +1,22 @@
 .button {
 	border: none;
 	display: block;
-	padding: 10px;
-	border-radius: 3px;
+	border-radius: 2px;
 	background-color: $green;
-	box-shadow: $btn-box;
 	color: white;
 	font-weight: 400;
+	box-shadow: $btn-box;
 	text-transform: uppercase;
 	margin: 5px auto;
 	text-align: center;
 	cursor: pointer;
 	@include transition(all 0.3s);
+
+	i {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 5px 0 -10px;
+	}
 
 	&.inline {
 
@@ -21,8 +26,11 @@
 		}
 	}
 
+	&:visited {
+		color: white;
+	}
+
 	&:hover,
-	&:visited,
 	&:focus {
 		text-decoration: none;
 		color: white;
