@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#changepasswd
-		.changepasswd
+	#changepasswd.access
+		.changepasswd.container-access
 			h1.heading Change Password
 			h3 @#{username}
 			form(id="frmRegister" action="/access/changepasswd" method="post")
@@ -19,4 +19,4 @@ block content
 					label(for="confirmpassword") Confirm Password: <br>
 					input#confirmpassword(type="password", name="confirmpassword", value="")
 				.field
-					button.btn(id="btnRegister") Change Password
+					button.btn-large.button(id="btnRegister") Change Password

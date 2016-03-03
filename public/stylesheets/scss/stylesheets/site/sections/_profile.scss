@@ -1,8 +1,8 @@
 form#edit-profile,
 #profile {
 	width: 100%;
-	padding: 20px;
-	margin-top: 50px;
+	height: 100%;
+	padding: 50px 20px 20px;
 
 	.edit-profile,
 	.profile {
@@ -10,6 +10,7 @@ form#edit-profile,
 		margin: 0 auto 15px;;
 		padding: 20px;
 		box-shadow: $def-box;
+		border-radius: 3px;
 		background-color: white;
 		@include transition(padding 0.3s);
 
@@ -51,5 +52,10 @@ form#edit-profile,
 		@media all and (min-width: 768px) {
 			padding: 30px 70px;
 		}
+	}
+
+	.profile-info {
+		max-width: 1280px;
+		margin: 0 auto 15px;
 	}
 }

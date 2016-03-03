@@ -25,14 +25,13 @@ router.get('/', function(req, res) {
 	if (req.query.isNew){
 		query = req.query;
 		viewObj.newUser = true;
-		viewObj.newuser = "Account successfully created! Login with the temporary password sent to your email.";
+		viewObj.newuser = "Account successfully created! Login with the temporary password that will be sent to your email shortly.";
 	}
 
 	if (req.query.reset){
-		viewObj.reset = "Password reset successful! Login with the temporary password sent to your email.";
+		viewObj.reset = "Password reset successful! Login with the temporary password that will be sent to your email shortly.";
 	}
 
-	console.log(viewObj.new)
 	res.render('access/login', viewObj);
 });
 
@@ -57,8 +56,7 @@ router.post('/', function(req, res){
 			if(query && query.isNew && query.isNew === 'true') {
 				return res.redirect('/access/changepasswd');
 			}
-
-			res.redirect("/user/profile")
+			return res.redirect("/user/profile");
 	 	}
 	}
 

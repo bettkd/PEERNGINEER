@@ -14,9 +14,8 @@
 			width: 80px;
 			border-radius: 50%;
 			border: none;
-			background-color: $blue;
+			background-color: $green;
 			box-shadow: $def-box;
-			@include transition(background-color 0.3s linear);
 
 			.nonav-back-btn {
 				display: block;
@@ -46,10 +45,6 @@
 					@include transform(rotate(-45deg));
 				}
 			}
-
-			&:hover {
-				background-color: $green;
-			}
 		}
 
 		#nonav-home-btn {
@@ -72,7 +67,7 @@
 			padding: 17px 20px;
 			border-radius: 50%;
 			border: none;
-			background-color: $red;
+			background-color: $green;
 			box-shadow: $def-box;
 			color: white;
 			@include transition(background-color 0.3s linear);
@@ -95,13 +90,13 @@ h1 {
 	&.heading {
 		font-weight: 400;
 		text-transform: uppercase;
-		color: darken(gray, 15%);
+		color: $primary-text-color;
 	}
 }
 
 a {
 	text-decoration: none;
-	border-bottom: 3px solid rgba($blue, 0.5);
+	border-bottom: 3px solid rgba($blue-primary, 0.5);
 	@include transition(color 0.5s linear);
 
 	&:visited,
@@ -120,7 +115,7 @@ header {
 	height: 103px;
 	margin: 0 auto;
 	padding: 20px;
-	background-color: $blue;
+	background-color: $blue-primary;
 	box-shadow: 0 1px 4px #333;
 	position: fixed;
 	top: 0;

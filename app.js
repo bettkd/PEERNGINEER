@@ -10,6 +10,9 @@ var sassMiddleware = require('node-sass-middleware');
 var Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com");
 
+// Get Cloudinary API
+var cloudinary = require('cloudinary');
+
 var routes = require('./routes'),
 	login = require('./routes/access/login'),
 	logout = require('./routes/access/logout'),
@@ -19,6 +22,7 @@ var routes = require('./routes'),
 	users = require('./routes/user/users'),
 	profile = require('./routes/user/profile'),
 	profile_edit = require('./routes/user/profile_edit');
+	changeavatar = require('./routes/user/changeavatar');
 
 var app = express();
 
@@ -55,6 +59,7 @@ app.use(sassMiddleware({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', routes);
 app.use('/access/login', login);
 app.use('/access/logout', logout);
@@ -64,6 +69,7 @@ app.use('/access/changepasswd', changepasswd);
 app.use('/user/users', users);
 app.use('/user/profile', profile);
 app.use('/user/profile_edit', profile_edit);
+app.use('/user/changeavatar', changeavatar);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -94,6 +100,13 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+// Configure API for saving images
+cloudinary.config({ 
+	cloud_name: 'peerngineer', 
+	api_key: '897862564791181', 
+	api_secret: 'AJcDSocxqA4wrXSxqxD06iHtnDY' 
 });
 
 

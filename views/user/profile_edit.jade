@@ -6,17 +6,15 @@ block content
 	
 	form#edit-profile(action="/user/profile_edit", method="post", novalidate)
 		input(type="hidden", name="username", value="#{uname}")
-		input(type="hidden", name="email", value="#{auth.password.email}")
-		input(type="hidden", name="_id", value="#{auth.uid}")
 		
-		if isNew
+		if isNew == "true"
 			.edit-profile.complete-profile
 				h3 Complete your profile.
 				
 		.edit-profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{auth.password.profileImageURL}")
+					img(src="#{(user && !!user.gravatar) ? user.gravatar: auth.password.profileImageURL}")
 					h3.uname @#{uname}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					.field.fifty
@@ -67,4 +65,4 @@ block content
 		.edit-profile
 			.row
 				.field
-					button.btn(id="btnUpdate", type="submit") Update
+					button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Update

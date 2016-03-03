@@ -1,8 +1,8 @@
 extends ../layouts/nonav
 
 block content
-	#register
-		.register
+	#register.access
+		.register.container-access
 			h1.heading Register
 			form(id="frmRegister" action="/access/register" method="post")
 				if err
@@ -12,5 +12,5 @@ block content
 					label(for="email") Email: <br>
 					input#email.focus(type="text", name="email", value= (!!email) ? email : "")
 				.field
-					button.btn(id="btnRegister") Register
+					button.btn-large.button(id="btnRegister") Register
 			p Already have an account? <a href="/access/login">Login</a>

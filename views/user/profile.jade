@@ -5,13 +5,26 @@ block content
 		.profile
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
-					img(src="#{auth.password.profileImageURL}")
+					img(src="#{(user && !!user.gravatar) ? user.gravatar: auth.password.profileImageURL}")
 					h3.uname @#{user.username}
 				.user-info.col-xs-12.col-sm-7.col-md-9
 					h1.user-name= user.fullname
 					p.user-bio= user.bio
 					.buttons
-						a.button.edit(href="/user/profile_edit") Edit
-						a.button.avatar(href="#") Change Gravatar
-						a.button.password(href="/access/changepasswd") Change password
-						
+						a.btn-large.button.inline(href="/user/profile_edit") 
+							i.material-icons mode_edit
+							| Edit
+						a.btn-large.button.inline(href="/user/changeavatar") Change Gravatar
+						a.btn-large.button.inline(href="/access/changepasswd") Change password
+		
+		.profile-info
+			ul.collapsible.popout(data-collapsible="collapsible")
+				li
+					.collapsible-header 
+						p.c-header Contact Info
+					.collapsible-body
+						ul.contact-info
+							each contact in user.contact
+								li(class="#{contact}")
+									a(href="#") #{contact}
+				
