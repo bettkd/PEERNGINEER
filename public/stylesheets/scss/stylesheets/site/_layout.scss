@@ -15,7 +15,7 @@
 			border-radius: 50%;
 			border: none;
 			background-color: $green;
-			box-shadow: $def-box;
+			box-shadow: $small-box;
 
 			.nonav-back-btn {
 				display: block;
@@ -55,7 +55,7 @@
 			border-radius: 50%;
 			border: none;
 			background-color: $green;
-			box-shadow: $def-box;
+			box-shadow: $small-box;
 			color: white;
 			@include transition(background-color 0.3s linear);
 		}
@@ -68,7 +68,7 @@
 			border-radius: 50%;
 			border: none;
 			background-color: $green;
-			box-shadow: $def-box;
+			box-shadow: $small-box;
 			color: white;
 			@include transition(background-color 0.3s linear);
 		}
