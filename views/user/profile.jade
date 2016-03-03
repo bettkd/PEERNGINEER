@@ -6,9 +6,9 @@ block content
 			.row
 				.gravatar.col-xs-12.col-sm-5.col-md-3
 					img(src="#{(user && !!user.gravatar) ? user.gravatar: auth.password.profileImageURL}")
-					h3.uname @#{user.username}
+					h4.uname @#{user.username}
 				.user-info.col-xs-12.col-sm-7.col-md-9
-					h1.user-name= user.fullname
+					h3.user-name= user.fullname
 					p.user-bio= user.bio
 					.buttons
 						a.btn-large.button.inline(href="/user/profile_edit") 
@@ -18,13 +18,26 @@ block content
 						a.btn-large.button.inline(href="/access/changepasswd") Change password
 		
 		.profile-info
-			ul.collapsible.popout(data-collapsible="collapsible")
-				li
-					.collapsible-header 
-						p.c-header Contact Info
+			ul.collapsible(data-collapsible="collapsible")
+				li.active
+					.collapsible-header.active
+						i.material-icons contacts
+						h5.c-header
+							| Contact Info
 					.collapsible-body
 						ul.contact-info
-							each contact in user.contact
-								li(class="#{contact}")
-									a(href="#") #{contact}
-				
+							each contact, i in user.contact
+								li(class="#{i}")
+									case i
+										when 'facebookID'
+											i.fa.fa-facebook-square
+											a(href="https://www.facebook.com/#{contact}") Facebook (#{contact})
+										when 'githubID'
+											i.fa.fa-github-square
+											a(href="https://www.github.com/#{contact}") Github (#{contact})
+										when 'linkedinID'
+											i.fa.fa-linkedin-square
+											a(href="https://www.linkedin.com/in/#{contact}") LinkedIn (#{contact})
+										when 'phone'
+											i.fa.fa-phone-square
+											span Phone (#{contact})

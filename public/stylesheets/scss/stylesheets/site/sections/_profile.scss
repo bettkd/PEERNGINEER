@@ -57,5 +57,36 @@ form#edit-profile,
 	.profile-info {
 		max-width: 1280px;
 		margin: 0 auto 15px;
+
+		.collapsible {
+
+			.collapsible-header {
+				padding: 10px;
+
+				i {
+					display: inline-block;
+					vertical-align: middle;
+					margin: 0;
+				}
+
+				.c-header {
+					margin: 0;
+					padding: 5px;
+					display: inline-block;
+					vertical-align: middle;
+					text-transform: uppercase;
+					font-weight: lighter;
+				}
+			}
+
+			.collapsible-body {
+				padding: 10px;
+
+				li {
+					padding: 5px 0;
+					font-size: 1.2em;
+				}
+			}
+		}
 	}
 }
