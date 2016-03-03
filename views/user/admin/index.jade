@@ -1,3 +1,26 @@
 extends ../../layouts/nonav
 
 block content
+	#admin
+		.admin-container
+			h5.heading.muted Dashboard
+			
+			.stats-container.row
+				.stat.col.s12.m4
+					.stat-container.user-count.row
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p users
+							h5= userCount
+				.stat.col.s12.m4
+					.stat-container.mentee-count.row
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p mentees
+							h5= menteeCount
+				.stat.col.s12.m4
+					.stat-container.mentor-count.row
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p mentors
+							h5= mentorCount

@@ -1,0 +1,50 @@
+#admin {
+	@extend #profile;
+
+	.admin-container {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 30px 20px;
+
+		.stats-container {
+			width: 100%;
+
+			.stat {
+				padding: 10px;
+
+				.stat-container {
+					padding: 10px;
+					box-shadow: $small-box;
+					color: white;
+
+					i {
+						@include display(flex);
+						@include justify-content(center);
+						@include align-items(center);
+						font-size: 4.8em;
+					}
+
+					span {
+
+						p {
+							text-transform: uppercase;
+							margin: 5px 0;
+						}
+					}
+
+					&.user-count {
+						background-color: $primary-color;
+					}
+
+					&.mentee-count {
+						background-color: $red;
+					}
+
+					&.mentor-count {
+						background-color: $green;
+					}
+				}
+			}
+		}
+	}
+}

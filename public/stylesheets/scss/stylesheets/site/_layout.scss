@@ -94,6 +94,20 @@ h1 {
 	}
 }
 
+h5 {
+
+	&.heading {
+		font-weight: 400;
+		text-transform: uppercase;
+		color: $primary-text-color;
+	}
+}
+
+.muted {
+	color: rgba($primary-text-color, 0.7) !important;
+}
+
+
 a {
 	text-decoration: none;
 	border-bottom: 3px solid rgba($blue-primary, 0.5);
