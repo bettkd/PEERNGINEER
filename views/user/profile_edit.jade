@@ -32,16 +32,16 @@ block content
 				h2.heading Contact Info
 				.field.fifty
 					label(for="phone") Phone:
-					input#phone(type="text", name="phone", value= (user && !!user.phone) ? user.phone : "")
+					input#phone(type="text", name="phone", value= (user && !!user.contact.phone) ? user.contact.phone : "")
 				.field.fifty
 					label(for="linkedinID") LinkedIn ID:
-					input#linkedinID(type="text", name="linkedinID", value= (user && !!user.linkedinID) ? user.linkedinID : "")
+					input#linkedinID(type="text", name="linkedinID", value= (user && !!user.contact.linkedinID) ? user.contact.linkedinID : "")
 				.field.fifty
 					label(for="facebookID") Facebook ID:
-					input#facebookID(type="text", name="facebookID", value= (user && !!user.facebookID) ? user.facebookID : "")
+					input#facebookID(type="text", name="facebookID", value= (user && !!user.contact.facebookID) ? user.contact.facebookID : "")
 				.field.fifty
 					label(for="githubID") GitHub ID:
-					input#githubID(type="text", name="githubID", value= (user && !!user.githubID) ? user.githubID : "")
+					input#githubID(type="text", name="githubID", value= (user && !!user.contact.githubID) ? user.contact.githubID : "")
 					
 		.edit-profile
 			.row
