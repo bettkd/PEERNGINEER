@@ -70,6 +70,29 @@
 				padding: 20px;
 				background-color: white;
 				box-shadow: $small-box;
+
+				.topic-container {
+					padding: 10px;
+
+					.topic {
+						width: 100%;
+						display: block;
+						text-align: center;
+						padding: 20px;
+						border: none;
+						background-color: lighten($green, 10%);
+						color: white;
+						box-shadow: $small-box;
+
+						&.js {
+							background-color: darken($yellow, 5%);
+						}
+
+						&.php {
+							background-color: darken(purple, 8%);
+						}
+					}
+				}
 			}
 		}
 	}

@@ -38,9 +38,12 @@ block content
 				.inline-couple
 					h5.heading.muted Topics
 					button.btn-floating.light-green.modal-trigger(data-target="add-topic"): i.material-icons add
-				.topics
+				.topics.row
 					if topics
-						pre= toppics
+						each topic in topics
+							.topic-container.col.s12.m3
+								button.topic(class="#{topic.shortname.toLowerCase()}", data-target="#{topic.shortname}-modal")
+									h2 #{topic.shortname}
 					else
 						h3.muted No topics found.
 				#add-topic.modal

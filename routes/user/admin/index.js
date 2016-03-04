@@ -3,7 +3,8 @@ var _ = require('underscore'),
 	router = express.Router(),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
+	topicRef = new Firebase("https://peerngineer.firebaseio.com/topics");
 
 var viewObj = {
 	title: 'Admin | PEERNGINEER'
@@ -30,7 +31,13 @@ router.get('/', function(req, res, next) {
 		});
 		viewObj.menteeCount = countMentees.true || 0;
 
-	}, utils.authRedir(req, res, 'user/admin', viewObj));
+	}, topicRef.on('value', function(snapshot) {
+
+		//get topics
+		viewObj.topics = snapshot.val();
+		console.log(snapshot.val());
+
+	}, utils.authRedir(req, res, 'user/admin', viewObj)));
 
 });
 
