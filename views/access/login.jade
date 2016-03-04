@@ -24,3 +24,8 @@ block content
 					button.button.btn-large(id="btnLogin") Login
 			p Forgot your password? <a href="/access/resetpasswd">Reset Password</a>
 			p Don't have an account? <a href="/access/register">Register</a>
+			
+block js
+	//- reset sessionStorage.welcomed
+	script.
+		sessionStorage.removeItem('welcomed');

@@ -16,26 +16,7 @@ var viewObj = {
 var username, id;
 
 router.get('/', function(req, res) {
-	var authData = ref.getAuth();
-	if (authData) {
-
-		username = authData.password.email.split('@')[0]
-
-		//get user data
-		userRef.child(username).once('value', function(snapshot) {
-			var exists = (snapshot.val() !== null);
-			viewObj.auth = authData;
-			if (exists) {
-				viewObj.user = snapshot.val();
-				return res.render('user/changeavatar', viewObj);
-			} else {
-				return res.redirect('profile_edit');
-			}
-		});
-	} else {
-		console.log("User not authenticated");
-		return res.redirect('/access/login');
-	}
+	utils.authRedir(req, res, 'user/changeavatar', viewObj);
 });
 
 
@@ -48,7 +29,7 @@ router.post('/', function(req, res) {
 
 	 } else {
 
-		cloudinary.uploader.upload(imageFile, function(result) { 
+		cloudinary.uploader.upload(imageFile, function(result) {
 
 			if (result.error) {
 				console.log(result.error.message) // Handle this error
