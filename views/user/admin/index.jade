@@ -1,0 +1,37 @@
+extends ../../layouts/nonav
+
+block content
+	.fixed-action-btn.horizontal.click-to-toggle(style="bottom: 45px; right: 24px;")
+		a.btn-floating.btn-large.red(title="Click to Open")
+			i.material-icons mode_edit
+		ul
+			li: a.btn-floating.red: i.material-icons insert_chart
+			li: a.btn-floating.yellow.darken-1: i.material-icons format_quote
+			li: a.btn-floating.green: i.material-icons publish
+			li: a.btn-floating.blue: i.material-icons attach_file
+	</div>
+	#admin
+		.admin-container
+			h5.heading.muted Dashboard
+			
+			.stats-container.row
+				.stat.col.s12.m4
+					a.stat-container.user-count.row(href="#")
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p users
+							h5= userCount
+				.stat.col.s12.m4
+					a.stat-container.mentee-count.row(href="#")
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p mentees
+							h5= menteeCount
+				.stat.col.s12.m4
+					a.stat-container.mentor-count.row(href="#")
+						i.fa.fa-user.col.s3
+						span.col.s9
+							p mentors
+							h5= mentorCount
+							
+		
