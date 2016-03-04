@@ -40,23 +40,23 @@
 						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($primary-color, 5%);
+							background-color: lighten($blue-primary, 10%);
 						}
 					}
 
 					&.mentee-count {
-						background-color: $red;
+						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($red, 5%);
+							background-color: lighten($blue-primary, 8%);
 						}
 					}
 
 					&.mentor-count {
-						background-color: $green;
+						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($green, 5%);
+							background-color: lighten($blue-primary, 6%);
 						}
 					}
 				}

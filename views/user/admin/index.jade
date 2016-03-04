@@ -42,8 +42,29 @@ block content
 					if topics
 						each topic in topics
 							.topic-container.col.s12.m3
-								button.topic(class="#{topic.shortname.toLowerCase()}", data-target="#{topic.shortname}-modal")
+								button.topic.modal-trigger(class="#{topic.shortname.toLowerCase()}", data-target="#{topic.shortname}-modal")
 									h2 #{topic.shortname}
+									
+							.modal(id="#{topic.shortname}-modal")
+								form(method="post", action="/user/admin/update-topic")
+									.modal-content
+										h5.heading.muted Edit #{topic.name}
+										.field
+											label(for="topic") Topic
+											input#topic.focus(type="text", name="topic", value="#{topic.name}")
+										.field
+											label(for="shortname") Shortname
+											input#shortname.focus(type="text", name="shortname", value="#{topic.shortname}")
+										.field
+											label(for="category") category
+											select#category(name="category")
+												option(value="web" selected= (topic.category == "web") ? selected : null) Web
+												option(value="mobile" selected= (topic.category == "mobile") ? selected : null) Mobile
+												option(value="ios" selected= (topic.category == "ios") ? selected : null) iOS
+												option(value="pc" selected= (topic.category == "pc") ? selected : null) PC
+									.modal-footer
+										.field
+											button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save
 					else
 						h3.muted No topics found.
 				#add-topic.modal
