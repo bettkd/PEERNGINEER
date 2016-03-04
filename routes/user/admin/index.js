@@ -3,8 +3,7 @@ var _ = require('underscore'),
 	router = express.Router(),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
-	topicRef = new Firebase("https://peerngineer.firebaseio.com/topics");
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
 
 var viewObj = {
 	title: 'Admin | PEERNGINEER'
@@ -36,9 +35,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add-topic', function(req, res) {
-	
+	var topicData = {
+		id: [req.body.shortname.toLowerCase(), utils.ranStr(6)].join("-"),
+		name: req.body.topic,
+		shortname: req.body.shortname,
+		category: req.body.category
+	},
+		topicRef = new Firebase("https://peerngineer.firebaseio.com/topics/" + topicData.shortname);
 
-	res.redirect('/user/admin?topicAdded=true');
+	topicRef.update(topicData, function(err) {
+		if(err) throw err;
+
+		res.redirect('/user/admin?topicAdded=true');
+	});
 });
 
 module.exports = router;
