@@ -3,7 +3,8 @@ var _ = require('underscore'),
 	router = express.Router(),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
+	topicRef = new Firebase("https://peerngineer.firebaseio.com/topics");
 
 var viewObj = {
 	title: 'Admin | PEERNGINEER'
@@ -32,6 +33,12 @@ router.get('/', function(req, res, next) {
 
 	}, utils.authRedir(req, res, 'user/admin', viewObj));
 
+});
+
+router.post('/add-topic', function(req, res) {
+	
+
+	res.redirect('/user/admin?topicAdded=true');
 });
 
 module.exports = router;

@@ -118,6 +118,18 @@ a {
 		color: inherit;
 		text-decoration: none;
 	}
+
+	&[class*="btn"],
+	&[class*="button"] {
+
+		&:visited,
+		&:focus,
+		&:hover {
+			text-decoration: none;
+			border: none;
+			color: white;
+		}
+	}
 }
 
 li {
@@ -269,6 +281,19 @@ header {
 					color: white;
 				}
 			}
+		}
+	}
+}
+
+.inline-couple {
+	padding: 5px 0;
+
+	& > * {
+		display: inline-block;
+		vertical-align: middle;
+
+		&:nth-child(2n+1) {
+			margin-right: 10px;
 		}
 	}
 }

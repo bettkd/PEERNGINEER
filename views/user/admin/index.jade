@@ -33,5 +33,32 @@ block content
 						span.col.s9
 							p mentors
 							h5= mentorCount
-							
-		
+			
+			.topics-container.row
+				.inline-couple
+					h5.heading.muted Topics
+					button.btn-floating.light-green.modal-trigger(data-target="add-topic"): i.material-icons add
+				.topics
+					if topics
+						pre= toppics
+					else
+						h3.muted No topics found.
+				#add-topic.modal
+					form(method="post", action="/user/admin/add-topic")
+						.modal-content
+							.field
+								label(for="topic") Topic
+								input#topic.focus(type="text", name="topic")
+							.field
+								label(for="shortname") Shortname
+								input#shortname.focus(type="text", name="shortname")
+							.field
+								label(for="category") category
+								select#category(name="category")
+									option(value="web") Web
+									option(value="mobile") Mobile
+									option(value="ios") iOS
+									option(value="pc") PC
+						.modal-footer
+							.field
+								button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save

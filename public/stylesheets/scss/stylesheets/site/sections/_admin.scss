@@ -62,5 +62,15 @@
 				}
 			}
 		}
+
+		.topics-container {
+			width: 100%;
+
+			.topics {
+				padding: 20px;
+				background-color: white;
+				box-shadow: $small-box;
+			}
+		}
 	}
 }

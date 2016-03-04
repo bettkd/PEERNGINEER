@@ -17,11 +17,22 @@ html {
 	@import '../../bourbon/bourbon';
 	@import '../../materialize/materialize';
 	@import 'site/variables';
+
+
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	background-color: $lightgray;
+
 	@import 'site/layout';
 
 	//misc
 	@import 'site/misc/buttons';
 	@import 'site/misc/forms';
+	@import 'site/misc/modal';
 	@import 'site/misc/timepicker';
 
 	// sections
@@ -33,12 +44,4 @@ html {
 	@import 'site/sections/resetpasswd';
 	@import 'site/sections/changepasswd';
 	@import 'site/sections/changeavatar';
-
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	font-size: 14px;
-	font-family: 'Roboto', sans-serif;
-	background-color: $lightgray;
 }
