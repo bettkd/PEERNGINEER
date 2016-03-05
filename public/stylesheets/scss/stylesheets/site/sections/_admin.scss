@@ -83,13 +83,39 @@
 						background-color: lighten($green, 10%);
 						color: white;
 						box-shadow: $small-box;
+						position: relative;
+						@include transition(background-color 0.3s);
 
 						&.js {
-							background-color: darken($yellow, 5%);
+							background-color: #f0db4f;
+
+							&:hover {
+								background-color: darken(#f0db4f, 10%);
+							}
 						}
 
 						&.php {
-							background-color: darken(purple, 8%);
+							background-color: #777bb4;
+
+							&:hover {
+								background-color: darken(#777bb4, 10%);
+							}
+						}
+
+						.abs-name {
+							position: absolute;
+							bottom: 5px;
+							left: 5px;
+							text-transform: uppercase;
+							margin: 0;
+						}
+
+						.abs-cat {
+							position: absolute;
+							top: 5px;
+							right: 5px;
+							text-transform: uppercase;
+							margin: 0;
 						}
 					}
 				}

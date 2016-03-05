@@ -44,7 +44,8 @@ block content
 							.topic-container.col.s12.m3
 								button.topic.modal-trigger(class="#{topic.shortname.toLowerCase()}", data-target="#{topic.shortname}-modal")
 									h2 #{topic.shortname}
-									
+									p.abs-name #{topic.name}
+									p.abs-cat #{topic.category}
 							.modal(id="#{topic.shortname}-modal")
 								form(method="post", action="/user/admin/update-topic")
 									.modal-content
@@ -70,6 +71,7 @@ block content
 				#add-topic.modal
 					form(method="post", action="/user/admin/add-topic")
 						.modal-content
+							h5.heading.muted Add new topic
 							.field
 								label(for="topic") Topic
 								input#topic.focus(type="text", name="topic")
