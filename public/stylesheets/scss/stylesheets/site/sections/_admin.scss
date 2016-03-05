@@ -121,5 +121,15 @@
 				}
 			}
 		}
+
+		.users-container {
+			width: 100%;
+
+			.users {
+				padding: 20px;
+				background-color: white;
+				box-shadow: $small-box;
+			}
+		}
 	}
 }

@@ -3,6 +3,16 @@
 	//focus
 		$('.focus').focus();
 
+	//topics on profile edit
+		$('.topic').on('click', function() {
+			$(this).toggleClass('selected');
+			if($(this).attr('class').indexOf('selected') > -1) {
+				$(this).next('input').attr('name', 'topic');
+			} else {
+				$(this).next('input').attr('name', null);
+			}
+		})
+
 	//multi select custom
 		var $day = $(".day"),
 			$times = $(".time");
@@ -39,7 +49,7 @@
 			});
 		});
 
-		//materialize functions
+	//materialize functions
 		$('select').material_select();
 
 		$('.collapsible').collapsible({
@@ -47,5 +57,6 @@
 		});
 
 		$('.modal-trigger').leanModal();
+
 
 })();

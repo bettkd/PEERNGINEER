@@ -88,3 +88,30 @@ block content
 						.modal-footer
 							.field
 								button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save
+								
+			.users-container.row
+				h5.heading.muted Users
+				.users
+					table.responsive-table.highlight
+						thead
+							tr
+								th(data-field="edit") Edit
+								th(data-field="name") Name
+								th(data-field="email") Email
+								th(data-field="classification") Classification
+								th(data-field="mentor") isMentor
+						tbody
+							each user in users
+								tr
+									td: button.modal-trigger(data-target="#{user.username}-edit-modal")
+										i.material-icons mode_edit
+									td.name #{user.fullname}
+									td.email #{user.email}
+									td.classification #{user.classification}
+									td.is-mentor #{(user.isMentor === true) ? "Yes" : "No"}
+								div.modal(id="#{user.username}-edit-modal")
+									.modal-content
+										.inline-couple
+											h5.Heading.muted Edit #{user.fullname}
+										
+									.modal-footer
