@@ -2,7 +2,8 @@ var express = require('express'),
 	router = express.Router(),
 	Firebase = require('firebase');
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
+	topicRef = new Firebase("https://peerngineer.firebaseio.com/topics");
 
 var viewObj = {
 	title: 'Edit Profile | PEERNGINEER'
@@ -18,14 +19,13 @@ router.get('/', function(req, res) {
 		username = authData.password.email.split('@')[0];
 		gravatar = authData.password.profileImageURL;
 
-		console.log("authData "+ authData)
 		//set auth for view access
 		viewObj.auth = authData;
 
 		//get user data
 		userRef.child(username).once('value', function(snapshot) {
 		    var exists = (snapshot.val() !== null);
-		    console.log("EXISTANCE: " + exists);
+
 		    if (exists) {
 		    	viewObj.user = snapshot.val();
 		    	newUser = "false";
@@ -34,9 +34,12 @@ router.get('/', function(req, res) {
 		    	newUser = "true";
 		    	viewObj.isNew = "true";
 		    }
-			console.log("new ???? " + viewObj.user);
+
+		}, topicRef.on("value", function(snapshot) {
+			viewObj.topics = snapshot.val();
+
 			res.render('user/profile_edit', viewObj)
-		});
+		}));
 
 	} else {
 		res.redirect('/access/login');
@@ -50,7 +53,6 @@ router.post('/', function(req, res) {
 	//get user data from req
 	var userData = {
 		uid: authData.uid,
-		isAdmin: false,
 		isMentor: false,
 		isMentee: true,
 		username: req.body.username,
@@ -67,6 +69,7 @@ router.post('/', function(req, res) {
 		},
 		major: req.body.major,
 		classification: req.body.classification,
+		topics: req.body.topic,
 		availability: {
 			"monday": req.body["monday-times"] || [],
 			"tuesday": req.body["tuesday-times"] || [],
@@ -77,22 +80,12 @@ router.post('/', function(req, res) {
 	}
 
 	//set userRef
-	var userRef = ref.child('users');
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + username );
+	userRef.update(userData, function(err) {
+		if(err) throw err;
 
-	if(newUser) {
-		console.log("New User added!")
-		userData.gravatar = gravatar;
-		userRef.child(username).set(userData);
 		res.redirect('/user/profile');
-	} else {
-		console.log("Old User updated!")
-		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + username );
-		userRef.update(userData, function(err) {
-			if(err) throw err;
-
-			res.redirect('/user/profile');
-		})
-	}
+	})
 });
 
 module.exports = router;
