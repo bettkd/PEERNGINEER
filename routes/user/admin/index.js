@@ -3,7 +3,8 @@ var _ = require('underscore'),
 	router = express.Router(),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
+	topicRef = new Firebase("https://peerngineer.firebaseio.com/topics");
 
 var viewObj = {
 	title: 'Admin | PEERNGINEER'
@@ -30,8 +31,46 @@ router.get('/', function(req, res, next) {
 		});
 		viewObj.menteeCount = countMentees.true || 0;
 
-	}, utils.authRedir(req, res, 'user/admin', viewObj));
+	}, topicRef.on('value', function(snapshot) {
+
+		//get topics
+		viewObj.topics = snapshot.val();
+
+	}, utils.authRedir(req, res, 'user/admin', viewObj)));
 
 });
+
+//handle topic creation
+router.post('/add-topic', function(req, res) {
+	var topicData = {
+		id: [req.body.shortname.toLowerCase(), utils.ranStr(6)].join("-"),
+		name: req.body.topic,
+		shortname: req.body.shortname,
+		category: req.body.category
+	},
+		topicRef = new Firebase("https://peerngineer.firebaseio.com/topics/" + topicData.shortname);
+
+	topicRef.update(topicData, function(err) {
+		if(err) throw err;
+
+		res.redirect('/user/admin?topicAdded=true');
+	});
+});
+
+//handle topic data updates
+router.post('/update-topic', function(req, res) {
+	var topicData = {
+		name: req.body.topic,
+		shortname: req.body.shortname,
+		category: req.body.category
+	},
+		topicRef = new Firebase("https://peerngineer.firebaseio.com/topics/" + topicData.shortname);
+
+	topicRef.update(topicData, function(err) {
+		if(err) throw err;
+
+		res.redirect('/user/admin?topicUpdated=true');
+	});
+})
 
 module.exports = router;

@@ -40,23 +40,82 @@
 						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($primary-color, 5%);
+							background-color: lighten($blue-primary, 10%);
 						}
 					}
 
 					&.mentee-count {
-						background-color: $red;
+						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($red, 5%);
+							background-color: lighten($blue-primary, 8%);
 						}
 					}
 
 					&.mentor-count {
-						background-color: $green;
+						background-color: $primary-color;
 
 						&:hover {
-							background-color: lighten($green, 5%);
+							background-color: lighten($blue-primary, 6%);
+						}
+					}
+				}
+			}
+		}
+
+		.topics-container {
+			width: 100%;
+
+			.topics {
+				padding: 20px;
+				background-color: white;
+				box-shadow: $small-box;
+
+				.topic-container {
+					padding: 10px;
+
+					.topic {
+						width: 100%;
+						display: block;
+						text-align: center;
+						padding: 20px;
+						border: none;
+						background-color: lighten($green, 10%);
+						color: white;
+						box-shadow: $small-box;
+						position: relative;
+						@include transition(background-color 0.3s);
+
+						&.js {
+							background-color: #f0db4f;
+
+							&:hover {
+								background-color: darken(#f0db4f, 10%);
+							}
+						}
+
+						&.php {
+							background-color: #777bb4;
+
+							&:hover {
+								background-color: darken(#777bb4, 10%);
+							}
+						}
+
+						.abs-name {
+							position: absolute;
+							bottom: 5px;
+							left: 5px;
+							text-transform: uppercase;
+							margin: 0;
+						}
+
+						.abs-cat {
+							position: absolute;
+							top: 5px;
+							right: 5px;
+							text-transform: uppercase;
+							margin: 0;
 						}
 					}
 				}
