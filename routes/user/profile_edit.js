@@ -53,7 +53,6 @@ router.post('/', function(req, res) {
 	//get user data from req
 	var userData = {
 		uid: authData.uid,
-		isMentor: false,
 		isMentee: true,
 		username: req.body.username,
 		first : req.body.firstname,
