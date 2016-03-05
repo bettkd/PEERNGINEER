@@ -15,7 +15,9 @@ router.get('/', function(req, res, next) {
 
 	//calculate users and other data to send to view
 	userRef.on('value', function(snapshot) {
-
+		//get all users
+		viewObj.users = snapshot.val();
+		
 		//get amount of users
 		viewObj.userCount = Object.keys(snapshot.val()).length;
 

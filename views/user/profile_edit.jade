@@ -58,6 +58,20 @@ block content
 						option(value="senior" selected= (user && user.classification === "senior") ? true : null) Senior
 						option(value="graduate" selected= (user && user.classification === "graduate") ? true : null) Graduate
 		
+		if topics
+			.edit-profile
+				h2.heading Topics
+				.topics-container
+					.topics.row
+							each topic in topics
+								.topic-container.col.s12.m3
+									button.topic(class="#{topic.shortname.toLowerCase()} #{(user && user.topics && user.topics.indexOf(topic.shortname) > -1) ? 'selected' : ''}", type="button")
+										h2 #{topic.shortname}
+										p.abs-name #{topic.name}
+										p.abs-cat #{topic.category}
+									input(type="hidden", value="#{topic.shortname}", name= (user && user.topics && user.topics.indexOf(topic.shortname) > -1) ? 'topic' : null)
+				
+		
 		.edit-profile
 			h2.heading Availability
 			+dayTimePicker

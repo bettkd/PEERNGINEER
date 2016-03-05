@@ -52,6 +52,78 @@ form#edit-profile,
 		@media all and (min-width: 768px) {
 			padding: 30px 70px;
 		}
+
+		.topics-container {
+			width: 100%;
+
+			.topics {
+
+				.topic-container {
+					padding: 10px;
+
+					.topic {
+						width: 100%;
+						display: block;
+						text-align: center;
+						padding: 20px;
+						border: none;
+						background-color: lighten($green, 10%);
+						color: white;
+						box-shadow: $small-box;
+						position: relative;
+						@include transition(all 0.3s);
+
+						&.js {
+							background-color: #f0db4f;
+
+							&:hover {
+								background-color: darken(#f0db4f, 10%);
+							}
+						}
+
+						&.php {
+							background-color: #777bb4;
+
+							&:hover {
+								background-color: darken(#777bb4, 10%);
+							}
+						}
+
+						&.selected {
+							box-shadow: none;
+							border: 5px solid $blue-primary;
+
+							&::after {
+								content: "\f046";
+								font-family: FontAwesome;
+								display: block;
+								position: absolute;
+								bottom: 5px;
+								right: 5px;
+								color: white;
+								font-size: 1.4em;
+							}
+						}
+
+						.abs-name {
+							position: absolute;
+							bottom: 5px;
+							left: 5px;
+							text-transform: uppercase;
+							margin: 0;
+						}
+
+						.abs-cat {
+							position: absolute;
+							top: 5px;
+							right: 5px;
+							text-transform: uppercase;
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.profile-info {
