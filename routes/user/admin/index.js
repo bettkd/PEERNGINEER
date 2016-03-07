@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 	userRef.on('value', function(snapshot) {
 		//get all users
 		viewObj.users = snapshot.val();
-		
+
 		//get amount of users
 		viewObj.userCount = Object.keys(snapshot.val()).length;
 
@@ -73,6 +73,22 @@ router.post('/update-topic', function(req, res) {
 
 		res.redirect('/user/admin?topicUpdated=true');
 	});
-})
+});
+
+//handle user edits
+router.post('/edit-user', function(req, res) {
+	console.log(req.body);
+	var userData = {
+		isMentor: (req.body.roles.indexOf('mentor') > -1) ? true : false,
+		isAdmin: (req.body.roles.indexOf('admin') > -1) ? true : false
+	},
+		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + req.body.username);
+
+	userRef.update(userData, function(err) {
+		if(err) throw err;
+
+		res.redirect('/user/admin?userUpdated=true');
+	});
+});
 
 module.exports = router;

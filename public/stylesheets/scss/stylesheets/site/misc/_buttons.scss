@@ -33,3 +33,16 @@
 		background-color: lighten($green, 10%);
 	}
 }
+
+.edit-button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	color: gray;
+	padding: 5px;
+	margin: 0;
+
+	&:focus,
+	&:hover {
+		background-color: rgba(0,0,0,0);
+	}
+}
