@@ -49,7 +49,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
 	var authData = ref.getAuth();
-
+	
 	//get user data from req
 	var userData = {
 		uid: authData.uid,
