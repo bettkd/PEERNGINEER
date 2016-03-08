@@ -77,10 +77,10 @@ router.post('/update-topic', function(req, res) {
 
 //handle user edits
 router.post('/edit-user', function(req, res) {
-	console.log(req.body);
+	console.log(req.body.isMentor);
 	var userData = {
-		isMentor: (req.body.roles.indexOf('mentor') > -1) ? true : false,
-		isAdmin: (req.body.roles.indexOf('admin') > -1) ? true : false
+		isMentor: (req.body.isMentor === "true") ? true : false,
+		isAdmin: (req.body.isAdmin === "true") ? true : false
 	},
 		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + req.body.username);
 
