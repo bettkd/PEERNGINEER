@@ -2,5 +2,18 @@ extends layouts/layout
 
 block content
 	#home
-		#banner
-		
+		#banner.row
+			.intro-text.col.s12.m6
+				h1 Learn from peers.
+				h1 Engineer with peers.
+			.register.col.s12.m6
+				.register-container
+					form(id="frmRegister" action="/access/register" method="post")
+						h5.heading Register
+						.form-group
+							.field
+								label(for="email") Email: <br>
+								input#email.focus(type="text", name="email", value= (!!email) ? email : "")
+							.field
+								button.button.blue.align(id="btnRegister") Start
+					p Already have an account? <a href="/access/login">Login</a>

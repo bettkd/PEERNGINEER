@@ -3,7 +3,60 @@
 
 	#banner {
 		width: 100%;
-		padding: 30px;
-		background-color: $blue-primary;
+		padding: 50px 30px;
+		background-color: $green;
+		color: white;
+
+		.intro-text {
+			font-size: 40px;
+			padding: 30px 20px;
+
+			h1 {
+				font-size: 1em;
+				margin: 0 auto 10px;
+			}
+
+			@media all and (min-width: 600px) {
+				text-align: right;
+				margin: 60px auto 0;
+			}
+		}
+
+		.register {
+			padding: 20px;
+
+			.register-container {
+				max-width: 500px;
+
+
+				form {
+
+					.heading {
+						background-color: darken($blue-primary, 10%);
+						color: white;
+						margin: 0;
+						padding: 30px 10px;
+						text-transform: none;
+						text-align: center;
+						border-top-right-radius: 5px;
+						border-top-left-radius: 5px;
+					}
+
+					input {
+						color: darken(#384047, 5%)
+					}
+
+					.form-group {
+						background-color: white;
+						padding: 20px 10px;
+
+						@media all and (min-width: 900px) {
+							padding: 20px 30px;
+						}
+					}
+
+				}
+			}
+		}
 	}
 }

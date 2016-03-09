@@ -150,6 +150,7 @@ header {
 	top: 0;
 	left: 0;
 	@include transition(all 0.3s);
+	box-shadow: $small-box;
 
 	#header {
 		position: relative;
@@ -219,6 +220,7 @@ header {
 					padding: 21px 20px;
 					font-size: 1.1em;
 					text-decoration: none;
+					color: darken(#384047, 5%);
 					@include transition(background-color 0.3s);
 
 					&.active,
