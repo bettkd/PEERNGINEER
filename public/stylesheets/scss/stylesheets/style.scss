@@ -32,12 +32,14 @@ html {
 	//misc
 	@import 'site/misc/buttons';
 	@import 'site/misc/forms';
+	@import 'site/misc/menu';
 	@import 'site/misc/modal';
 	@import 'site/misc/timepicker';
 
 	// sections
 	@import 'site/sections/access';
 	@import 'site/sections/admin';
+	@import 'site/sections/home';
 	@import 'site/sections/login';
 	@import 'site/sections/profile';
 	@import 'site/sections/register';

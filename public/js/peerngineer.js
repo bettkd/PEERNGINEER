@@ -1,5 +1,21 @@
 (function() {
 
+	//menu
+		$(window).on('load resize', function() {
+			$('.close-sect').css('width', $(window).width() - 270);
+		});
+
+		$('.open-menu, .close-menu button').on('click', function(e) {
+			e.preventDefault();
+			$("#hamburger-menu").toggleClass('open');
+			$("header, #body").toggleClass('menu-opened');
+		});
+
+		$('.close-sect').on('click', function() {
+			$("#hamburger-menu").toggleClass('open');
+			$("header, #body").toggleClass('menu-opened');
+		});
+
 	//focus
 		$('.focus').focus();
 

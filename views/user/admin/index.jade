@@ -109,24 +109,25 @@ block content
 									td.email #{user.email}
 									td.classification #{user.classification}
 									td.is-mentor #{(user.isMentor === true) ? "Yes" : "No"}
-								div.modal(id="#{user.username}-edit-modal")
-									form(method="post", action="/user/admin/edit-user")
-										input(type="hidden", name="username", value="#{user.username}")
-										.modal-content
-											.inline-couple
-												h5.Heading.muted Edit #{user.fullname}
-											.field
-												label(for="isAdmin") Admin?
-												select#isAdmin(name="isAdmin")
-													option(value="", disabled selected) Admin or not?
-													option(value="true") Yes
-													option(value="false") No
-											.field
-												label(for="isMentor") Mentor?
-												select#isMentor(name="isMentor")
-													option(value="", disabled selected) Mentor or not?
-													option(value="true") Yes
-													option(value="false") No
-										.modal-footer
-											.field
-												button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save
+									td
+										.modal(id="#{user.username}-edit-modal")
+											form(method="post", action="/user/admin/edit-user")
+												input(type="hidden", name="username", value="#{user.username}")
+												.modal-content
+													.inline-couple
+														h5.Heading.muted Edit #{user.fullname}
+													.field
+														label(for="isAdmin") Admin?
+														select#isAdmin(name="isAdmin")
+															option(value="", disabled selected) Admin or not?
+															option(value="true") Yes
+															option(value="false") No
+													.field
+														label(for="isMentor") Mentor?
+														select#isMentor(name="isMentor")
+															option(value="", disabled selected) Mentor or not?
+															option(value="true") Yes
+															option(value="false") No
+												.modal-footer
+													.field
+														button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save
