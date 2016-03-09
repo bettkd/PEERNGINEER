@@ -8,7 +8,6 @@
 	box-shadow: $small-box;
 	text-transform: uppercase;
 	margin: 5px auto;
-	padding: 10px;
 	text-align: center;
 	cursor: pointer;
 	@include transition(all 0.3s);
@@ -26,6 +25,7 @@
 	&.align {
 		margin: 0;
 		display: inline-block;
+		padding: 10px;
 	}
 
 	&.inline {

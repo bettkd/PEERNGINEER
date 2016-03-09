@@ -5,6 +5,8 @@
 	top: 0;
 	left: 0;
 	z-index: 99;
+	@include transition(all 0.5s);
+	@include transform(translateX(100%));
 
 	.hamburger-menu {
 		position: relative;;
@@ -17,7 +19,7 @@
 			left: 0;
 		}
 
-		.menu {
+		#menu {
 			display: block;
 			position: absolute;
 			right: 0;
@@ -31,7 +33,31 @@
 				border-bottom: 1px solid darken(#384047, 5%);
 				position: relative;
 			}
+
+			.menu {
+				padding: 10px;
+
+				li {
+
+					a {
+						display: block;
+						border: none;
+						color: #999;
+						padding: 10px;
+						font-size: 1.5em;
+						text-decoration: none;
+						@include transition(all 0.5s);
+
+						&:hover {
+							color: white;
+						}
+					}
+				}
+			}
 		}
 	}
 
+	&.open {
+		@include transform(translateX(0));
+	}
 }

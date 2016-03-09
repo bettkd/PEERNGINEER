@@ -21,15 +21,25 @@ html
 	body.default
 		#hamburger-menu
 			.hamburger-menu
-				.menu
+				#menu
 					.close-menu
 						button.button.red.align(type="button") Close
+					ul.menu
+						li: a(href="#") Topics
+						li: a(href="#") About
+						if isUser
+							li: a(href="/user/profile") Account
+							li: a(href="/access/logout") Logout
+						else
+							li: a(href="/access/register") Register
+							li: a(href="/access/login") Login
 				.close-sect
 			
 		header
 			#header
 				a.logo(href="/")
 					img(src="/images/peerngineer-org.png")
+				a.open-menu(href="#"): i.material-icons menu
 		
 		#body
 			block content

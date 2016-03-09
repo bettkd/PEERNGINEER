@@ -5,6 +5,12 @@
 			$('.close-sect').css('width', $(window).width() - 300);
 		});
 
+		$('.open-menu, .close-menu button').on('click', function(e) {
+			e.preventDefault();
+			$("#hamburger-menu").toggleClass('open');
+			$("header, #body").toggleClass('menu-opened');
+		});
+
 	//focus
 		$('.focus').focus();
 
