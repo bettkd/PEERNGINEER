@@ -166,6 +166,10 @@ header {
 			font-size: 1.2em;
 			margin: 10px auto;
 			color: $blue-primary;
+
+			@media all and (min-width: 768px) {
+				display: none;
+			}
 		}
 
 		.logo {
@@ -189,25 +193,51 @@ header {
 			img {
 				width: 50%;
 			}
+
+			@media all and (min-width: 768px) {
+				position: absolute;
+				left: 40px;
+				top: 0;
+			}
+
+			@media all and (min-width: 1280px) {
+				left: 100px;
+			}
 		}
 
-		.log-reg {
-			padding: 0;
+		.navbar {
+			display: none;
 			margin: 0;
-			display: inline-block;
-			position: absolute;
-			right: 0;
-			top: 50%;
-			@include transform(translateY(-50%));
 
 			li {
 				display: inline-block;
+				text-align: center;
 
 				a {
 					display: block;
-					padding: 10px;
-					color: white;
+					border: none;
+					padding: 21px 20px;
+					font-size: 1.1em;
+					text-decoration: none;
+					@include transition(background-color 0.3s);
+
+					&.active,
+					&:hover {
+						background-color: $green;
+						color: white;
+					}
 				}
+			}
+
+
+			@media all and (min-width: 768px) {
+				display: block;
+				position: absolute;
+				right: 40px;
+			}
+
+			@media all and (min-width: 1280px) {
+				right: 100px;
 			}
 		}
 	}

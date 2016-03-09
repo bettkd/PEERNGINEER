@@ -40,6 +40,15 @@ html
 				a.logo(href="/")
 					img(src="/images/peerngineer-org.png")
 				a.open-menu(href="#"): i.material-icons menu
+				ul.navbar
+					li: a(href="#") Topics
+					li: a(href="#") About
+					if isUser
+						li: a(href="/user/profile") Account
+						li: a(href="/access/logout") Logout
+					else
+						li: a(href="/access/register") Register
+						li: a(href="/access/login") Login
 		
 		#body
 			block content
