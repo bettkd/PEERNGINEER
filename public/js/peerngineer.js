@@ -1,5 +1,10 @@
 (function() {
 
+	//menu
+		$(window).on('load resize', function() {
+			$('.close-sect').css('width', $(window).width() - 300);
+		});
+
 	//focus
 		$('.focus').focus();
 
