@@ -21,6 +21,7 @@ var routes = require('./routes'),
 	resetpasswd = require('./routes/access/resetpasswd'),
 	changepasswd = require('./routes/access/changepasswd'),
 	admin = require('./routes/user/admin'),
+	mentor = require('./routes/user/admin/mentor'),
 	profile = require('./routes/user/profile'),
 	profile_edit = require('./routes/user/profile_edit'),
 	changeavatar = require('./routes/user/changeavatar');
@@ -68,6 +69,7 @@ app.use('/access/register', register);
 app.use('/access/resetpasswd', resetpasswd);
 app.use('/access/changepasswd', changepasswd);
 app.use('/user/admin', admin);
+app.use('/user/admin/mentor', mentor);
 app.use('/user/profile', profile);
 app.use('/user/profile_edit', profile_edit);
 app.use('/user/changeavatar', changeavatar);

@@ -1,6 +1,7 @@
 var _ = require('underscore'),
 	express = require('express'),
 	router = express.Router(),
+	async = require('async'),
 	Firebase = require('firebase'),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
 	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
@@ -13,33 +14,44 @@ var viewObj = {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-	//calculate users and other data to send to view
-	userRef.on('value', function(snapshot) {
-		//get all users
-		viewObj.users = snapshot.val();
+	async.parallel([
+		//get user data
+		function(cb) {
+			userRef.on('value', function(snapshot) {
+				//get all users
+				viewObj.users = snapshot.val();
 
-		//get amount of users
-		viewObj.userCount = Object.keys(snapshot.val()).length;
+				//get amount of users
+				viewObj.userCount = Object.keys(snapshot.val()).length;
 
-		//count mentors
-		var countMentors = _.countBy(snapshot.val(), function(obj){
-			return obj.isMentor;
-		});
-		viewObj.mentorCount = countMentors.true || 0;
+				//count mentors
+				var countMentors = _.countBy(snapshot.val(), function(obj){
+					return obj.isMentor;
+				});
+				viewObj.mentorCount = countMentors.true || 0;
 
-		//count mentees
-		var countMentees = _.countBy(snapshot.val(), function(obj){
-			return obj.isMentee;
-		});
-		viewObj.menteeCount = countMentees.true || 0;
+				//count mentees
+				var countMentees = _.countBy(snapshot.val(), function(obj){
+					return obj.isMentee;
+				});
+				viewObj.menteeCount = countMentees.true || 0;
 
-	}, topicRef.on('value', function(snapshot) {
-
+				cb();
+			})
+		},
 		//get topics
-		viewObj.topics = snapshot.val();
+		function(cb) {
+			topicRef.on('value', function(snapshot) {
+				//get topics
+				viewObj.topics = snapshot.val();
+				cb();
+			});
+		}
+	], function(err) {
+		if(err) throw err;
 
-	}, utils.authRedir(req, res, 'user/admin', viewObj)));
-
+		utils.authRedir(req, res, 'user/admin', viewObj)
+	});
 });
 
 //handle topic creation
