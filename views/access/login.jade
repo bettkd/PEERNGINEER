@@ -2,6 +2,9 @@ extends ../layouts/nonav
 
 block content
 	#login.access
+		.access-logo
+			a(href="/")
+				img.access-img(src="/images/peerngineer-org.png")
 		.login.container-access
 			h1.heading Login
 			form(id="frmlogin" action="/access/login" method="post")
