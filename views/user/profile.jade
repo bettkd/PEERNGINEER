@@ -11,19 +11,42 @@ block content
 					h3.user-name= user.fullname
 					p.user-bio= user.bio
 					.buttons
-						a.btn-large.button.inline(href="/user/profile_edit") 
+						a.btn.button.inline(href="/user/profile_edit") 
 							i.material-icons mode_edit
 							| Edit
 						if user.isAdmin
-							a.btn-large.button.inline(href="/user/admin") 
+							a.btn.button.inline(href="/user/admin") 
 								i.fa.fa-lock
-								| Dashboard
-						a.btn-large.button.inline(href="/user/changeavatar") Change Gravatar
-						a.btn-large.button.inline(href="/access/changepasswd") Change password
+								| AdPanel
+						if user.isMentor
+							a.btn.button.inline(href="/user/admin/mentor") 
+								i.fa.fa-lock
+								| MPanel
+						a.btn.button.inline(href="/user/changeavatar")
+							i.material-icons account_circle
+							| Change Gravatar
+						a.btn.button.inline(href="/access/changepasswd")
+							i.material-icons security
+							| Change password
 		
 		.profile-info
 			ul.collapsible(data-collapsible="collapsible")
 				li.active
+					.collapsible-header.active
+						i.material-icons bookmark
+						h5.c-header
+							| Mentee Topics
+					.collapsible-body
+						if user.topics
+							.topics-container
+								.topics.row
+									each topic in user.topics
+										.topic-container.col.s12.m3
+											.topic.blue.lighten-1
+												h2 #{topic}
+						else
+							p You've not selected any topics.
+				li
 					.collapsible-header.active
 						i.material-icons contacts
 						h5.c-header
