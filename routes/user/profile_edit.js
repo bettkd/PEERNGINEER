@@ -1,5 +1,6 @@
 var express = require('express'),
 	router = express.Router(),
+	async = require('async');
 	Firebase = require('firebase');
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
 	userRef = new Firebase("https://peerngineer.firebaseio.com/users"),
@@ -13,33 +14,37 @@ var newUser, username, gravatar;
 router.get('/', function(req, res) {
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
+	viewObj.auth = authData;
 
 	if (authData) {
+		async.parallel([
+			//get user data
+			function(cb) {
+				userRef.child(utils.getUname()).once('value', function(snapshot) {
+					var exists = (snapshot.val() !== null);
 
-		username = authData.password.email.split('@')[0];
-		gravatar = authData.password.profileImageURL;
+					if (exists) {
+						viewObj.user = snapshot.val();
+						viewObj.isNew = "false";
+					} else {
+						viewObj.isNew = "true";
+					}
 
-		//set auth for view access
-		viewObj.auth = authData;
-
-		//get user data
-		userRef.child(username).once('value', function(snapshot) {
-		    var exists = (snapshot.val() !== null);
-
-		    if (exists) {
-		    	viewObj.user = snapshot.val();
-		    	newUser = "false";
-		    	viewObj.isNew = "false";
-		    } else {
-		    	newUser = "true";
-		    	viewObj.isNew = "true";
-		    }
-
-		}, topicRef.on("value", function(snapshot) {
-			viewObj.topics = snapshot.val();
+					cb();
+				});
+			},
+			//get topics
+			function(cb) {
+				topicRef.on('value', function(snapshot) {
+					viewObj.topics = snapshot.val();
+					cb();
+				});
+			}
+		], function(err) {
+			if(err) throw err;
 
 			res.render('user/profile_edit', viewObj)
-		}));
+		});
 
 	} else {
 		res.redirect('/access/login');
@@ -49,7 +54,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
 	var authData = ref.getAuth();
-	
+
 	//get user data from req
 	var userData = {
 		uid: authData.uid,

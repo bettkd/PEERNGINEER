@@ -2,6 +2,8 @@ extends ../layouts/nonav
 
 block content
 	#changeavatar.access
+		.access-logo
+			img.access-img(src="/images/peerngineer-org.png")
 		.changeavatar.container-access
 			h1.heading Change Avatar
 			form(id="frmChangeAvatar" action="/user/changeavatar" method="post" enctype="multipart/form-data")

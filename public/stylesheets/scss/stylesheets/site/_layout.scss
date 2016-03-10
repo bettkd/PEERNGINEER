@@ -209,6 +209,7 @@ header {
 		.navbar {
 			display: none;
 			margin: 0;
+			border: none;
 
 			li {
 				display: inline-block;
@@ -217,7 +218,7 @@ header {
 				a {
 					display: block;
 					border: none;
-					padding: 21px 20px;
+					padding: 22px 20px;
 					font-size: 1.1em;
 					text-decoration: none;
 					color: darken(#384047, 5%);
