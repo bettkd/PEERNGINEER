@@ -17,9 +17,6 @@ block content
 						if user.isAdmin
 							a.btn.button.inline(href="/user/admin") 
 								i.fa.fa-lock
-								| Dashboard
-						a.btn-large.button.inline(href="/user/changeavatar") Change Gravatar
-						a.btn-large.button.inline.modal-trigger(data-target="modalChangepasswd") Change Password
 								| AdPanel
 						if user.isMentor
 							a.btn.button.inline(href="/user/admin/mentor") 
