@@ -19,7 +19,7 @@ block content
 								i.fa.fa-lock
 								| Dashboard
 						a.btn-large.button.inline(href="/user/changeavatar") Change Gravatar
-						a.btn-large.button.inline(href="/access/changepasswd") Change password
+						a.btn-large.button.inline.modal-trigger(data-target="modalChangepasswd") Change Password
 		
 		.profile-info
 			ul.collapsible(data-collapsible="collapsible")
@@ -60,6 +60,26 @@ block content
 							.classification.col.s12.m4
 								p Classification
 								h5= user.classification
+
+		#modalChangepasswd.modal
+			form(method="post", action="/access/changepasswd")
+				.modal-content
+					h5.heading.muted Change Password
+					if err
+						.errors
+							p=err
+					.field
+						label(for="password") Current Password: <br>
+						input#password(type="password", name="password", value=(!!password) ? password : "")
+					.field
+						label(for="newpassword") New Password: <br>
+						input#newpassword(type="password", name="newpassword", value="")
+					.field
+						label(for="confirmpassword") Confirm Password: <br>
+						input#confirmpassword(type="password", name="confirmpassword", value="")
+				.modal-footer
+					.field
+						button.btn-large.waves-effect.waves-light(id="btnRegister", type="submit") Change Password
 
 block js
 	script.
