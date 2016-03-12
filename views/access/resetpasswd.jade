@@ -2,6 +2,9 @@ extends ../layouts/nonav
 
 block content
 	#resetpasswd.access
+		.access-logo
+			a(href="/")
+				img.access-img(src="/images/peerngineer-org.png")
 		.resetpasswd.container-access
 			h1.heading Reset Password
 			form(id="frmresetpasswd" action="/access/resetpasswd" method="post")

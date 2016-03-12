@@ -80,7 +80,12 @@
 	#body {
 		width: 100%;
 		height: 100%;
-		padding: 103px 10px 10px;
+		padding: 68px 0 10px;
+		@include transition(all 0.3s);
+
+		&.menu-opened {
+			@include transform(translateX(-270px));
+		}
 	}
 }
 
@@ -138,119 +143,43 @@ li {
 
 header {
 	width: 100%;
-	height: 103px;
+	height: 68px;
 	margin: 0 auto;
-	padding: 20px;
-	background-color: $blue-primary;
-	box-shadow: 0 1px 4px #333;
+	background-color: white;
 	position: fixed;
 	top: 0;
 	left: 0;
+	@include transition(all 0.3s);
+	box-shadow: $small-box;
 
 	#header {
 		position: relative;
 		width: 100%;
 		text-align: center;
 
-		.menu-btn {
-			width: 100px;
-			padding: 30px;
+		.open-menu {
+			display: inline-block;
+			border: none;
 			position: absolute;
-			left: 0;
-			cursor: pointer;
+			right: 10px;
+			top: 0;
+			padding: 10px;
+			font-size: 1.2em;
+			margin: 10px auto;
+			color: $blue-primary;
 
-			.btn-hrz-mid {
-				display: block;
-				width: 100%;
-				position: relative;
-				border-top: 3px solid white;
-				@include transition(all 0.2s ease-in-out);
-
-				&::before {
-					content: '';
-					display: block;
-					border-top: 3px solid white;
-					width: 100%;
-					position: absolute;
-					@include transition(all 0.2s ease-in-out);
-					left: 0;
-					top: -11px;
-				}
-
-				&:after {
-					content: '';
-					display: block;
-					border-bottom: 3px solid white;
-					width: 100%;
-					position: absolute;
-					@include transition(all 0.2s ease-in-out);
-					left: 0;
-					bottom: -8px;
-				}
-			}
-
-			&:hover {
-				.btn-hrz-mid {
-					&::before {
-						content: '';
-						display: block;
-						border-top: 3px solid white;
-						width: 100%;
-						position: absolute;
-						@include transition(all 0.2s ease-in-out);
-						left: 0;
-						top: -15px;
-					}
-
-					&:after {
-						content: '';
-						display: block;
-						border-bottom: 3px solid white;
-						width: 100%;
-						position: absolute;
-						@include transition(all 0.2s ease-in-out);
-						left: 0;
-						bottom: -12px;
-					}
-				}
-			}
-
-			&.open {
-
-				.btn-hrz-mid {
-					border: 3px solid rgba(0, 0, 0, 0);
-
-					&::before {
-						content: '';
-						display: block;
-						border-top: 3px solid white;
-						width: 100%;
-						position: absolute;
-						top: 0;
-						@include transition(all 0.2s ease-in-out);
-						@include transform(rotate(45deg));
-					}
-
-					&:after {
-						content: '';
-						display: block;
-						border-top: 3px solid white;
-						border-bottom: none;
-						width: 100%;
-						position: absolute;
-						top: 0;
-						@include transition(all 0.2s ease-in-out);
-						@include transform(rotate(-45deg));
-					}
-				}
+			@media all and (min-width: 768px) {
+				display: none;
 			}
 		}
 
 		.logo {
-			display: inline-block;
-			vertical-align: middle;
+			display: block;
 			padding: 12px 0;
-			margin: auto;
+			margin: 0 auto;
+			width: 200px;
+			max-width: 100%;
+			border: none;
 
 			h1 {
 				margin: 0;
@@ -261,27 +190,63 @@ header {
 				text-decoration: overline;
 				text-shadow: 0 0 5px rgba(black, 0.5);
 			}
+
+			img {
+				width: 50%;
+			}
+
+			@media all and (min-width: 768px) {
+				position: absolute;
+				left: 40px;
+				top: 0;
+			}
+
+			@media all and (min-width: 1280px) {
+				left: 100px;
+			}
 		}
 
-		.log-reg {
-			padding: 0;
+		.navbar {
+			display: none;
 			margin: 0;
-			display: inline-block;
-			position: absolute;
-			right: 0;
-			top: 50%;
-			@include transform(translateY(-50%));
+			border: none;
 
 			li {
 				display: inline-block;
+				text-align: center;
 
 				a {
 					display: block;
-					padding: 10px;
-					color: white;
+					border: none;
+					padding: 22px 20px;
+					font-size: 1.1em;
+					text-decoration: none;
+					color: darken(#384047, 5%);
+					@include transition(background-color 0.3s);
+
+					&.active,
+					&:hover {
+						background-color: $green;
+						color: white;
+					}
 				}
 			}
+
+
+			@media all and (min-width: 768px) {
+				display: block;
+				position: absolute;
+				right: 40px;
+			}
+
+			@media all and (min-width: 1280px) {
+				right: 100px;
+			}
 		}
+	}
+
+	&.menu-opened {
+		@include transform(translateX(-270px));
 	}
 }
 
