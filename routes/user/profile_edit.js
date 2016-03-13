@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
 	// get user data if theya are logged in
 	var authData = ref.getAuth();
 	viewObj.auth = authData;
+	console.log(authData);
 
 	if (authData) {
 		async.parallel([
@@ -64,6 +65,7 @@ router.post('/', function(req, res) {
 		last : req.body.lastname,
 		fullname : [req.body.firstname, req.body.lastname].join(' '),
 		email: authData.password.email,
+		//password: authData
 		bio : req.body.bio,
 		contact : {
 			phone : req.body.phone,
@@ -84,7 +86,7 @@ router.post('/', function(req, res) {
 	}
 
 	//set userRef
-	userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + username );
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + req.body.username );
 	userRef.update(userData, function(err) {
 		if(err) throw err;
 
