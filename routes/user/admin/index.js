@@ -14,7 +14,7 @@ var viewObj = {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-	async.parallel([
+	async.series([
 		//get user data
 		function(cb) {
 			userRef.on('value', function(snapshot) {
@@ -101,6 +101,12 @@ router.post('/edit-user', function(req, res) {
 
 		res.redirect('/user/admin?userUpdated=true');
 	});
+});
+
+//TODO:
+//handle user data delete
+router.post('/delete-user', function(req, res) {
+	res.redirect('/user/admin');
 });
 
 module.exports = router;
