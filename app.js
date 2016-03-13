@@ -24,7 +24,8 @@ var routes = require('./routes'),
 	mentor = require('./routes/user/admin/mentor'),
 	profile = require('./routes/user/profile'),
 	profile_edit = require('./routes/user/profile_edit'),
-	changeavatar = require('./routes/user/changeavatar');
+	changeavatar = require('./routes/user/changeavatar'),
+	topics = require('./routes/topics');
 
 var app = express();
 
@@ -73,6 +74,7 @@ app.use('/user/admin/mentor', mentor);
 app.use('/user/profile', profile);
 app.use('/user/profile_edit', profile_edit);
 app.use('/user/changeavatar', changeavatar);
+app.use('/topics', topics);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
