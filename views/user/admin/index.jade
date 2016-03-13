@@ -120,7 +120,7 @@ block content
 														label(for="isAdmin") Admin?
 														select#isAdmin(name="isAdmin")
 															option(value="", disabled selected) Admin or not?
-															option(value="true") Yes
+															option(value="true" selected) Yes
 															option(value="false") No
 													.field
 														label(for="isMentor") Mentor?
@@ -131,3 +131,10 @@ block content
 												.modal-footer
 													.field
 														button.btn-large.waves-effect.waves-light(id="btnUpdate", type="submit") Save
+											//- form to delete user
+											form.delete-user(method="post", action="/user/admin/delete-user")
+												input(type="hidden", name="email", value="#{user.email}")
+												input(type="hidden", name="username", value="#{user.username}")
+												button.btn.button.red(type="submit") 
+													i.material-icons delete_forever
+													| Remove

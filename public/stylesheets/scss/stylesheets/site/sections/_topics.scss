@@ -1,0 +1,72 @@
+#topics {
+	width: 100%;
+	padding: 100px 10px 0;
+
+	.heading {
+		max-width: 1280px;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#topics-container {
+		width: 1280px;
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 10px;
+
+		#search {
+			width: 100%;
+			border-radius: 3px;
+			box-shadow: $small-box;
+			background-color: white;
+			padding: 5px 20px;
+
+			i {
+				display:inline-block;
+				vertical-align: middle;
+				color: lightgray;
+			}
+
+			input {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+
+		.topics-container {
+			border-radius: 3px;
+			box-shadow: $small-box;
+			background-color: white;
+			margin: 10px auto;
+			padding: 15px;
+
+			#topic-container {
+				padding: 20px;
+
+				.topic-container {
+					box-shadow: $small-box;
+
+					.shortname {
+						display: block;
+						border: none;
+						border-top-left-radius: 3px;
+						border-top-right-radius: 3px;
+						text-decoration: none;
+						padding: 30px;
+						text-align: center;
+						background-color: $blue-primary;
+						color: white;
+					}
+
+					.topic-name {
+						text-align: center;
+						background-color: darken($lightgray, 1%);
+						color: black;
+						margin: 0;
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+}

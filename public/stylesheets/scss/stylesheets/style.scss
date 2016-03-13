@@ -25,7 +25,7 @@ html {
 	padding: 0;
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
-	background-color: $lightgray;
+	background-color: darken($lightgray, 1%);
 
 	@import 'site/layout';
 
@@ -46,4 +46,5 @@ html {
 	@import 'site/sections/resetpasswd';
 	@import 'site/sections/changepasswd';
 	@import 'site/sections/changeavatar';
+	@import 'site/sections/topics';
 }

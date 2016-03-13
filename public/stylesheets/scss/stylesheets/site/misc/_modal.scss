@@ -3,3 +3,13 @@
 	border-radius: 0;
 	border: none;
 }
+
+.delete-user {
+	position: absolute;
+	bottom: 0;
+	text-align: right;
+
+	button {
+		display: inline-block;
+	}
+}
