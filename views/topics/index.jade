@@ -1,1 +1,20 @@
 extends ../layouts/nonav
+
+block content
+	#topics
+		h3.heading.muted Topics
+		#topics-container
+			//- TODO: implement search 
+			form#search(method="post", action="/topics/search")
+				.field
+					input(type="text", name="search", placeholder="Search...")
+			.topics-container.row
+				if topics
+					each topic in topics
+						#topic-container.col.s12.m4.l3
+							.topic-container
+								a.shortname(href="/topics/topic?topic=#{topic.shortname}")
+									h2= topic.shortname
+								p.topic-name= topic.name
+				else
+					h3 No topics.
