@@ -1,4 +1,5 @@
-#topics {
+#topics,
+#topic {
 	width: 100%;
 	padding: 100px 10px 0;
 
@@ -8,7 +9,8 @@
 		margin: 0 auto;
 	}
 
-	#topics-container {
+	#topics-container,
+	#topic-container {
 		width: 1280px;
 		max-width: 100%;
 		margin: 0 auto;
