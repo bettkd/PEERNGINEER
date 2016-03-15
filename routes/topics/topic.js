@@ -14,6 +14,19 @@ var viewObj = {
 
 router.get('/:shortname', function(req, res) {
 	async.series([
+		//check if user signed in
+		//and if admin
+		function(cb) {
+			if(utils.getUname()) {
+				userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + utils.getUname());
+				userRef.on('value', function(snapshot) {
+					viewObj.user = snapshot.val();
+					cb();
+				})
+			} else {
+				cb();
+			}
+		},
 		//get user data
 		function(cb) {
 			userRef.on('value', function(snapshot) {

@@ -118,6 +118,11 @@ a {
 	border-bottom: 3px solid rgba($blue-primary, 0.5);
 	@include transition(color 0.5s linear);
 
+	&.no-border {
+		text-decoration: none;
+		border: none;
+	}
+
 	&:visited,
 	&:focus {
 		color: inherit;
