@@ -13,7 +13,7 @@ block content
 					each topic in topics
 						#topic-container.col.s12.m4.l3
 							.topic-container
-								a.shortname(href="/topics/topic?topic=#{topic.shortname}")
+								a.shortname(href="/topic/#{topic.shortname}")
 									h2= topic.shortname
 								p.topic-name= topic.name
 				else

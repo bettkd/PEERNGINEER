@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 	console.log(authData);
 
 	if (authData) {
-		async.parallel([
+		async.series([
 			//get user data
 			function(cb) {
 				userRef.child(utils.getUname()).once('value', function(snapshot) {
