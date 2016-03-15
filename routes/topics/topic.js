@@ -4,14 +4,15 @@ var express = require('express'),
 	_ = require('underscore'),
 	Firebase = require("firebase"),
 	ref = new Firebase("https://peerngineer.firebaseio.com"),
-	topicsRef = new Firebase("https://peerngineer.firebaseio.com/topics")
+	topicsRef = new Firebase("https://peerngineer.firebaseio.com/topics"),
+	userRef = new Firebase("https://peerngineer.firebaseio.com/users");
 
 var viewObj = {
-	title: 'Topics | PEERNGINEER',
+	title: 'Topic | PEERNGINEER',
 	user: false
 }
 
-router.get('/', function(req, res) {
+router.get('/:shortname', function(req, res) {
 	async.series([
 		//get user data
 		function(cb) {
@@ -23,16 +24,19 @@ router.get('/', function(req, res) {
 		},
 		//get topics
 		function(cb) {
-			topicsRef.on('value', function(snapshot) {
-				//get topics
-				viewObj.topics = snapshot.val();
+			topicRef = new Firebase("https://peerngineer.firebaseio.com/topics/" + req.params.shortname);
+
+			topicRef.on('value', function(snapshot) {
+				//get topic
+				viewObj.topic = snapshot.val();
+				viewObj.title = viewObj.topic.name + " | PEERNGINEER";
 				cb();
 			});
 		}
 	], function(err) {
 		if(err) throw err;
-		console.log(viewObj.topics);
-		res.render('topics', viewObj);
+
+		res.render('topics/topic', viewObj);
 	});
 });
 
