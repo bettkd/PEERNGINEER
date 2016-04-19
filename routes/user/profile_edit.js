@@ -18,31 +18,33 @@ router.get('/', function(req, res) {
 	console.log(authData);
 
 	if (authData) {
-		async.series([
+		async.parallel([
 			//get user data
 			function(cb) {
-				userRef.child(utils.getUname()).once('value', function(snapshot) {
+				userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + utils.getUname())
+				userRef.on('value', function(snapshot) {
 					var exists = (snapshot.val() !== null);
-
+					console.log(exists);
 					if (exists) {
 						viewObj.user = snapshot.val();
 						viewObj.isNew = "false";
 					} else {
 						viewObj.isNew = "true";
 					}
-
-					cb();
-				});
+				}, cb());
 			},
 			//get topics
 			function(cb) {
 				topicRef.on('value', function(snapshot) {
 					viewObj.topics = snapshot.val();
+
 					cb();
 				});
 			}
 		], function(err) {
-			if(err) throw err;
+			if(err) {
+				return err;
+			}
 
 			res.render('user/profile_edit', viewObj)
 		});
@@ -75,7 +77,7 @@ router.post('/', function(req, res) {
 		},
 		major: req.body.major,
 		classification: req.body.classification,
-		topics: req.body.topic,
+		topics: req.body.topic || "",
 		availability: {
 			"monday": req.body["monday-times"] || [],
 			"tuesday": req.body["tuesday-times"] || [],
@@ -91,7 +93,7 @@ router.post('/', function(req, res) {
 		if(err) throw err;
 
 		res.redirect('/user/profile');
-	})
+	});
 });
 
 module.exports = router;

@@ -81,7 +81,9 @@ router.post('/update-topic', function(req, res) {
 		topicRef = new Firebase("https://peerngineer.firebaseio.com/topics/" + topicData.shortname);
 
 	topicRef.update(topicData, function(err) {
-		if(err) throw err;
+		if(err) {
+			return console.log(err);
+		}
 
 		res.redirect('/user/admin?topicUpdated=true');
 	});
@@ -95,7 +97,7 @@ router.post('/edit-user', function(req, res) {
 	},
 		userRef = new Firebase("https://peerngineer.firebaseio.com/users/" + req.body.username);
 
-	userRef.set(userData, function(err) {
+	userRef.update(userData, function(err) {
 		res.redirect('/user/admin?userUpdated=true');
 	});
 });
