@@ -9,7 +9,7 @@ block content
 					each resource in resources
 						#resource-container.col.s12.m4.l3
 							.resource-container
-								a.alias(href="#{resource.url}" target="_blank")
+								a.alias(href="#{resource.url}" target="_blank" style="#{(resource.color) ? 'background-color:' + resource.color : ''}")
 									h2= resource.alias
 								p.resource-name= resource.name
 				else
