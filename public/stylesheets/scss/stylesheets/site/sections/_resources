@@ -1,0 +1,53 @@
+#resources {
+	width: 100%;
+	padding: 100px 10px 0;
+
+	.heading {
+		max-width: 1280px;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#resources-container {
+		width: 1280px;
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 10px;
+
+		.resources-container {
+			border-radius: 3px;
+			box-shadow: $small-box;
+			background-color: white;
+			margin: 10px auto;
+			padding: 15px;
+
+			#resource-container {
+				padding: 20px;
+
+				.resource-container {
+					box-shadow: $small-box;
+
+					.alias {
+						display: block;
+						border: none;
+						border-top-left-radius: 3px;
+						border-top-right-radius: 3px;
+						text-decoration: none;
+						padding: 30px;
+						text-align: center;
+						background-color: $blue-primary;
+						color: white;
+					}
+
+					.resource-name {
+						text-align: center;
+						background-color: darken($lightgray, 1%);
+						color: black;
+						margin: 0;
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+}

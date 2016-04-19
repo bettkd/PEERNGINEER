@@ -1,0 +1,16 @@
+extends ../layouts/nonav
+
+block content
+	#resources
+		h3.heading.muted Resources
+		#resources-container
+			.resources-container.row
+				if resources
+					each resource in resources
+						#resource-container.col.s12.m4.l3
+							.resource-container
+								a.alias(href="#{resource.url}" target="_blank")
+									h2= resource.alias
+								p.resource-name= resource.name
+				else
+					h3 No resource.
